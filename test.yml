@@ -1,0 +1,16 @@
+# list of company employees
+- employee:
+    name: jo
+    id: 004
+    turnover:
+        - { year: 2012, value: 130000 }
+        - { year: 2013, value: 220000 }
+        - { year: 2014, value: 210000 }
+
+- employee:
+    name: frank
+    id: 003
+    turnover:
+        - { year: 2011, value: 100000 }
+        - { year: 2012, value: 140000 }
+        - { year: 2013, value: 200000 }
