@@ -6,6 +6,7 @@
 Welcome to Processing YAML with Python Example's documentation!
 ===============================================================
 
+
 Contents
 ========
 
@@ -14,9 +15,9 @@ Contents
 
    main
    classes
-   pydoc
    dependencies
    references
+   unittests
 
 This is an example Python project used to demonstrate:
 
@@ -25,6 +26,13 @@ This is an example Python project used to demonstrate:
 * processing a file using `PyYAML <http://pyyaml.org>`_
 
 This project is managed using `GNU Make <http://www.gnu.org/software/make/>`_
+
+`PyDoc <https://docs.python.org/2/library/pydoc.html?highlight=pydoc#pydoc>`_
+is available for each module, via::
+
+    pydoc [module]
+
+I've included the PyDoc output for all :ref:`classes` and the :ref:`main` module.
 
 
 Indices and tables

@@ -5,6 +5,7 @@ References
 
 Here are links to the tools and articles I read to prepare this project:
 
+* `PyDoc <https://docs.python.org/2/library/pydoc.html?highlight=pydoc#pydoc>`_
 * `Pythons Unit Testing Framework <http://www.drdobbs.com/testing/unit-testing-with-python/240165163>`_
 * `PyYAML Documentation <http://pyyaml.org/wiki/PyYAMLDocumentation>`_
 * `Sphinx Documentation <http://sphinx-doc.org/contents.html>`_  

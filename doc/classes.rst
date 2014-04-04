@@ -5,20 +5,10 @@ Classes
 
 This project contains the following classes:
 
-.. _employees:
+.. toctree::
+   :maxdepth: 2
 
-Employees
----------
-
-.. automodule:: employees
-   :members:
-
-.. _testemployees:
-
-TestEmployees
--------------
-
-.. automodule:: testemployees
-   :members:
+   employees
+   testemployees
 
 .. EOF

@@ -33,8 +33,8 @@ class TestEmployees(unittest.TestCase):
         employees = Employees(self.TEST_FILE)
         dump = employees.dump()
         count = len(dump.split('\n'))
-        self.assertEqual(count, 15, "expected %i lines dump, got %i" % (15,
-            count))
+        self.assertEqual(count, 15, "expected %i lines dump, got %i"
+                         % (15, count))
 
     def testTurnoverByName(self):
         employees = Employees(self.TEST_FILE)
@@ -57,7 +57,7 @@ class TestEmployees(unittest.TestCase):
         expected = {'value': 210000, 'year': 2014}
         years = employees.getByName('jo')
         self.assertTrue(any(True for expected in years),
-                            "expected to find %s" % (expected))
+                        "expected to find %s" % (expected))
 
     def testIdContains(self):
         employees = Employees(self.TEST_FILE)
@@ -65,7 +65,7 @@ class TestEmployees(unittest.TestCase):
         expected = {'value': 210000, 'year': 2014}
         years = employees.getById(004)
         self.assertTrue(any(True for expected in years),
-                            "expected to find %s" % (expected))
+                        "expected to find %s" % (expected))
 
     def testNoId(self):
         employees = Employees(self.TEST_FILE)
@@ -82,7 +82,7 @@ class TestEmployees(unittest.TestCase):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees, 'expected employees')
         self.assertEqual(employees.getByYear(2001), 0,
-                "expected no turnover for this year")
+                         "expected no turnover for this year")
 
     def tearDown(self):
         pass

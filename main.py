@@ -16,16 +16,16 @@ def main(argv=sys.argv):
 
     """ Parse command line parameters. """
     parser = argparse.ArgumentParser(
-            prog=os.path.basename(argv[0]),
-            usage='%(prog)s [options]',
-            description='a Python example program to show YAML processing',
-            epilog='© 2014 Frank H Jung mailto:frankhjung@linux.com')
+        prog=os.path.basename(argv[0]),
+        usage='%(prog)s [options]',
+        description='a Python example program to show YAML processing',
+        epilog='© 2014 Frank H Jung mailto:frankhjung@linux.com')
     parser.add_argument('infile', nargs='?', type=argparse.FileType('r'),
-            default='test.yml', help='alternate YAML file to test')
+                        default='test.yml', help='alternate YAML file to test')
     parser.add_argument('-v', '--verbose', help='verbose output',
-            action='count')
+                        action='count')
     parser.add_argument('--version', action='version',
-            version='%(prog)s 0.0.1')
+                        version='%(prog)s 0.0.1')
 
     # process command line arguments
     args = parser.parse_args()
