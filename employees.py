@@ -41,7 +41,14 @@ class Employees:
             if e['employee']['name'] == name:
                 return e['employee']['turnover']
 
-    def getByYear(self, year):
+    def getByYear(self, name, year):
+        """ Returns turnover for an employees by year. """
+        years = self.getByName(name)
+        for y in years:
+            if y['year'] == int(year):
+                return y['value']
+
+    def getAllByYear(self, year):
         """ Returns turnover for all employees by year. """
         total = 0
         for e in self.employees:

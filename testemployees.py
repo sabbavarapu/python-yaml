@@ -72,16 +72,22 @@ class TestEmployees(unittest.TestCase):
         self.assertIsNotNone(employees, 'expected employees')
         self.assertIsNone(employees.getById(001))
 
-    def testTurnoverbyYear(self):
+    def testTurnoverByYear(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees, 'expected employees')
-        year = employees.getByYear(2012)
+        year = employees.getByYear('frank', 2012)
+        self.assertEqual(year, 140000)
+
+    def testTurnoverAllByYear(self):
+        employees = Employees(self.TEST_FILE)
+        self.assertIsNotNone(employees, 'expected employees')
+        year = employees.getAllByYear(2012)
         self.assertEqual(year, 270000)
 
     def testZeroTurnover(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees, 'expected employees')
-        self.assertEqual(employees.getByYear(2001), 0,
+        self.assertEqual(employees.getAllByYear(2001), 0,
                          "expected no turnover for this year")
 
     def tearDown(self):

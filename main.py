@@ -51,9 +51,13 @@ def main(argv=sys.argv):
         frank = employees.getByName('frank')
         print "\tfound employee frank: %s" % (frank)
 
+        print "\nShow an employee turnover for year 2012 ..."
+        turnover = employees.getByYear('frank', 2012)
+        print "\tturnover for frank in 2012: %s" % ("${:,}".format(turnover))
+
         print "\nShow turnover for 2012"
-        turnover = employees.getByYear(2012)
-        print "\tturnover for 2012 is %s" % ("${:,}".format(turnover))
+        turnover = employees.getAllByYear(2012)
+        print "\ttotal turnover in 2012 is %s" % ("${:,}".format(turnover))
 
 
 #
