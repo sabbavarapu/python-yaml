@@ -18,6 +18,7 @@ Contents
    dependencies
    references
    unittests
+   coverage
 
 This is an example Python project used to demonstrate:
 
