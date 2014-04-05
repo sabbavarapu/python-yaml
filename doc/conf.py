@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Processing YAML with Python Example'
+project = u'Processing YAML with Python'
 copyright = u'2014, Frank H Jung'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -164,7 +164,7 @@ html_static_path = ['.static', '../target/cover']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ProcessingYAMLwithPythonExampledoc'
+htmlhelp_basename = 'ProcessingYAMLwithPython'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ProcessingYAMLwithPythonExample.tex', u'Processing YAML with Python Example Documentation',
+  ('index', 'ProcessingYAMLwithPython.tex', u'Processing YAML with Python',
    u'Frank H Jung', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'processingyamlwithpythonexample', u'Processing YAML with Python Example Documentation',
+    ('index', 'processingyamlwithpython', u'Processing YAML with Python',
      [u'Frank H Jung'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'ProcessingYAMLwithPythonExample', u'Processing YAML with Python Example Documentation',
-   u'Frank H Jung', 'ProcessingYAMLwithPythonExample', 'One line description of project.',
+  ('index', 'ProcessingYAMLwithPython', u'Processing YAML with Python',
+   u'Frank H Jung', 'ProcessingYAMLwithPython', 'One line description of project.',
    'Miscellaneous'),
 ]
 

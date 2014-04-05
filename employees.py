@@ -9,9 +9,7 @@ This is a example Python program to read and process YAML files.
 
 class Employees:
 
-    """
-    Read Employee data to return turnover information.
-    """
+    """ Read Employee data to return turnover information. """
 
     def __init__(self, infile=None):
         self.employees = None
@@ -50,11 +48,15 @@ class Employees:
 
     def getAllByYear(self, year):
         """ Returns turnover for all employees by year. """
+        count = 0
         total = 0
         for e in self.employees:
             for y in e['employee']['turnover']:
                 if y['year'] == int(year):
                     total += y['value']
+                    count += 1
+        if count == 0:
+            total = None
         return total
 
 #EOF

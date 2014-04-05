@@ -11,6 +11,7 @@ import unittest
 
 
 class TestEmployees(unittest.TestCase):
+
     """ Tests for Employees. """
 
     TEST_FILE = 'test.yml'
@@ -75,20 +76,20 @@ class TestEmployees(unittest.TestCase):
     def testTurnoverByYear(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees, 'expected employees')
-        year = employees.getByYear('frank', 2012)
-        self.assertEqual(year, 140000)
+        turnover = employees.getByYear(name='frank', year=2012)
+        self.assertEqual(turnover, 140000)
 
     def testTurnoverAllByYear(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees, 'expected employees')
-        year = employees.getAllByYear(2012)
-        self.assertEqual(year, 270000)
+        turnover = employees.getAllByYear(2012)
+        self.assertEqual(turnover, 270000)
 
-    def testZeroTurnover(self):
+    def testNoYear(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees, 'expected employees')
-        self.assertEqual(employees.getAllByYear(2001), 0,
-                         "expected no turnover for this year")
+        turnover = employees.getAllByYear(2001)
+        self.assertIsNone(turnover)
 
     def tearDown(self):
         pass

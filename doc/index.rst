@@ -1,10 +1,8 @@
-.. Processing YAML with Python Example documentation master file, created by
-   sphinx-quickstart on Fri Apr  4 10:08:55 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Processing YAML with Python master file,
+   created by sphinx-quickstart on Fri Apr  4 10:08:55 2014.
 
-Welcome to Processing YAML with Python Example's documentation!
-===============================================================
+Processing YAML with Python 
+===========================
 
 
 Contents

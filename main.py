@@ -14,18 +14,28 @@ import sys
 
 def main(argv=sys.argv):
 
-    """ Parse command line parameters. """
+    """ Test employees class. """
+
     parser = argparse.ArgumentParser(
         prog=os.path.basename(argv[0]),
         usage='%(prog)s [options]',
         description='a Python example program to show YAML processing',
         epilog='© 2014 Frank H Jung mailto:frankhjung@linux.com')
-    parser.add_argument('infile', nargs='?', type=argparse.FileType('r'),
-                        default='test.yml', help='alternate YAML file to test')
-    parser.add_argument('-v', '--verbose', help='verbose output',
-                        action='count')
-    parser.add_argument('--version', action='version',
-                        version='%(prog)s 0.0.1')
+    parser.add_argument(
+        'infile',
+        nargs='?',
+        type=argparse.FileType('r'),
+        default='test.yml',
+        help='alternate YAML file to test')
+    parser.add_argument(
+        '-v',
+        '--verbose',
+        help='verbose output',
+        action='count')
+    parser.add_argument(
+        '--version',
+        action='version',
+        version='%(prog)s 0.0.1')
 
     # process command line arguments
     args = parser.parse_args()
@@ -44,20 +54,20 @@ def main(argv=sys.argv):
         print "\tverbose = %s" % (verbose)
         print "\tdata:\n%s" % (infile.read())
 
-        print "\nDump YAML document ..."
-        print employees.dump()
+    print "\nDump YAML document ..."
+    print employees.dump()
 
-        print "\nShow an employee ..."
-        frank = employees.getByName('frank')
-        print "\tfound employee frank: %s" % (frank)
+    print "\nShow an employee ..."
+    frank = employees.getByName('frank')
+    print "\tfound employee frank: %s" % (frank)
 
-        print "\nShow an employee turnover for year 2012 ..."
-        turnover = employees.getByYear('frank', 2012)
-        print "\tturnover for frank in 2012: %s" % ("${:,}".format(turnover))
+    print "\nShow an employee turnover for year 2012 ..."
+    turnover = employees.getByYear('frank', 2012)
+    print "\tturnover for frank in 2012: %s" % ("${:,}".format(turnover))
 
-        print "\nShow turnover for 2012"
-        turnover = employees.getAllByYear(2012)
-        print "\ttotal turnover in 2012 is %s" % ("${:,}".format(turnover))
+    print "\nShow turnover for 2012"
+    turnover = employees.getAllByYear(2012)
+    print "\ttotal turnover in 2012 is %s" % ("${:,}".format(turnover))
 
 
 #

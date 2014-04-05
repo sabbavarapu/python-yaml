@@ -1,7 +1,9 @@
-# Manage YAML example project
+# Manage project
 #
-# You can run just the unittests using ...
-# python testemployees.py
+# You can run unittests using ...
+# - python testemployees.py
+# - unit2 discover -v
+# - python -m unittest discover -v
 
 COVER_DIR = target/cover
 

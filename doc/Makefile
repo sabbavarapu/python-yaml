@@ -77,17 +77,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/ProcessingYAMLwithPythonExample.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/ProcessingYAMLwithPython.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/ProcessingYAMLwithPythonExample.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/ProcessingYAMLwithPython.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/ProcessingYAMLwithPythonExample"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/ProcessingYAMLwithPythonExample"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/ProcessingYAMLwithPython"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/ProcessingYAMLwithPython"
 	@echo "# devhelp"
 
 epub:
