@@ -98,10 +98,10 @@ class TestEmployees(unittest.TestCase):
 # MAIN
 #
 if __name__ == '__main__':
-    # simplist execution is
-    # unittest.main()
-    # but this gives better reporting
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestEmployees)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    # to get verbose output use '-v' option
+    unittest.main()
+    # the following gives verbose output by default
+    # suite = unittest.TestLoader().loadTestsFromTestCase(TestEmployees)
+    # unittest.TextTestRunner(verbosity=2).run(suite)
 
 #EOF

@@ -3,25 +3,37 @@
 Unit Tests
 ==========
 
-Unit test results are::
+Here I am using the default Python :ref:`unittest <references>` suite.
+To run the unit tests using::
 
-   ./testemployees.py -v test.yml 
-   testDump (__main__.TestEmployees) ... ok
-   testIdContains (__main__.TestEmployees) ... ok
-   testLoadFromFile1 (__main__.TestEmployees) ... ok
-   testLoadFromFile2 (__main__.TestEmployees) ... ok
-   testNameContains (__main__.TestEmployees) ... ok
-   testNoId (__main__.TestEmployees) ... ok
-   testNoName (__main__.TestEmployees) ... ok
-   testTurnoverAllByYear (__main__.TestEmployees) ... ok
-   testTurnoverByName (__main__.TestEmployees) ... ok
-   testTurnoverByYear (__main__.TestEmployees) ... ok
-   testZeroTurnover (__main__.TestEmployees) ... ok
+    python-coverage run -a --include=testemployees.py,employees.py testemployees.py
 
-   ----------------------------------------------------------------------
-   Ran 11 tests in 0.217s
+Or::
 
-   OK
+    python -m unittest discover -v
+
+Or::
+
+	unit2 discover -v
+
+The basic report of unit test results is::
+
+    testDump (testemployees.TestEmployees) ... ok
+    testIdContains (testemployees.TestEmployees) ... ok
+    testLoadFromFile1 (testemployees.TestEmployees) ... ok
+    testLoadFromFile2 (testemployees.TestEmployees) ... ok
+    testNameContains (testemployees.TestEmployees) ... ok
+    testNoId (testemployees.TestEmployees) ... ok
+    testNoName (testemployees.TestEmployees) ... ok
+    testTurnoverAllByYear (testemployees.TestEmployees) ... ok
+    testTurnoverByName (testemployees.TestEmployees) ... ok
+    testTurnoverByYear (testemployees.TestEmployees) ... ok
+    testZeroTurnover (testemployees.TestEmployees) ... ok
+
+    ----------------------------------------------------------------------
+    Ran 11 tests in 0.090s
+
+    OK
 
 See also :ref:`coverage`.
 

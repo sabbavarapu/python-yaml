@@ -3,15 +3,7 @@
 TestEmployees
 =============
 
-.. automodule:: testemployees
-   :members:
-
-PyDoc
------
-
-The `PyDoc` documentation for this module is::
-
-    Help on module testemployees:
+Help on module testemployees::
 
     NAME
         testemployees - Run unit tests for YAML file processing example, Employees.
@@ -51,9 +43,11 @@ The `PyDoc` documentation for this module is::
         |  
         |  testNoName(self)
         |  
+        |  testTurnoverAllByYear(self)
+        |  
         |  testTurnoverByName(self)
         |  
-        |  testTurnoverbyYear(self)
+        |  testTurnoverByYear(self)
         |  
         |  testZeroTurnover(self)
         |  
@@ -385,5 +379,9 @@ The `PyDoc` documentation for this module is::
         |  longMessage = False
         |  
         |  maxDiff = 640
+
+
+.. automodule:: testemployees
+   :members:
 
 .. EOF

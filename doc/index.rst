@@ -20,21 +20,15 @@ Contents
    unittests
    coverage
 
-This is an example Python project used to demonstrate:
+This is an example :ref:`Python <references>` project used to demonstrate:
 
-* use of Pythons `unittest framework <https://docs.python.org/2/library/unittest.html>`_
-* documentation using `Sphinx <https://pythonhosted.org/an_example_pypi_project/sphinx.html>`_
-* processing a file using `PyYAML <http://pyyaml.org>`_
+* documentation using :ref:`Sphinx <references>`
+* example processing a YAML file using :ref:`PyYAML <references>`
+* :ref:`PyDoc <references>` is available for each module
+* the project is managed using :ref:`GNU Make <references>`
+* use of Python's :ref:`unittest framework <references>`
 
-This project is managed using `GNU Make <http://www.gnu.org/software/make/>`_
-
-`PyDoc <https://docs.python.org/2/library/pydoc.html?highlight=pydoc#pydoc>`_
-is available for each module, via::
-
-    pydoc [module]
-
-I've included the PyDoc output for all :ref:`classes` and the :ref:`main` module.
-
+See the :ref:`references` for more.
 
 Indices and tables
 ==================

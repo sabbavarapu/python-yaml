@@ -3,16 +3,7 @@
 Main
 ====
 
-The :download:`main <../main.py>` module exists just to test the
-:ref:`employees` class from command line.
-
-PyDoc
------
-
-The `PyDoc` documentation for this module is::
-
-   pydoc main
-   Help on module main:
+Help on module main::
 
    NAME
       main
@@ -27,5 +18,8 @@ The `PyDoc` documentation for this module is::
    FUNCTIONS
       main(argv)
          Parse command line parameters.
+
+The :download:`main <../main.py>` module exists just to test the
+:ref:`employees` class from command line.
 
 .. EOF

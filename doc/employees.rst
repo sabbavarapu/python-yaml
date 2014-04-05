@@ -3,15 +3,7 @@
 Employees
 =========
 
-.. automodule:: employees
-   :members:
-
-PyDoc
------
-
-The `PyDoc` documentation for this module is::
-
-    Help on module employees:
+Help on module employees::
 
     NAME
         employees
@@ -35,15 +27,22 @@ The `PyDoc` documentation for this module is::
         |  
         |  dump(self)
         |  
+        |  getAllByYear(self, year)
+        |      Returns turnover for all employees by year.
+        |  
         |  getById(self, id)
         |      Returns turnover for all years for an employee.
         |  
         |  getByName(self, name)
         |      Returns turnover for all years for an employee.
         |  
-        |  getByYear(self, year)
-        |      Returns turnover for all employees by year.
+        |  getByYear(self, name, year)
+        |      Returns turnover for an employees by year.
         |  
         |  loadFromFile(self, infile)
+
+
+.. automodule:: employees
+   :members:
 
 .. EOF
