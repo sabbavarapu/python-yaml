@@ -57,6 +57,8 @@ def main(argv=sys.argv):
     print "\nDump YAML document ..."
     print employees.dump()
 
+    print "Python type of employees ..............:", type(employees.employees)
+
     t = employees.getByName('frank')
     print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))
 
