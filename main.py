@@ -57,17 +57,17 @@ def main(argv=sys.argv):
     print "\nDump YAML document ..."
     print employees.dump()
 
-    print "\nShow an employee ..."
-    frank = employees.getByName('frank')
-    print "\tfound employee frank: %s" % (frank)
+    t = employees.getByName('frank')
+    print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))
 
-    print "\nShow an employee turnover for year 2012 ..."
-    turnover = employees.getByYear('frank', 2012)
-    print "\tturnover for frank in 2012: %s" % ("${:,}".format(turnover))
+    t = employees.getById(4)
+    print "Turnover for employee id 4 ............: %s" % ("${:,}".format(t))
 
-    print "\nShow turnover for 2012"
-    turnover = employees.getAllByYear(2012)
-    print "\ttotal turnover in 2012 is %s" % ("${:,}".format(turnover))
+    t = employees.getByYear('frank', 2012)
+    print "Turnover for employee 'frank' in 2012 .: %s" % ("${:,}".format(t))
+
+    t = employees.getAllByYear(2012)
+    print "Turnover for all in 2012 ..............: %s" % ("${:,}".format(t))
 
 
 #

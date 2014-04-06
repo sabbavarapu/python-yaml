@@ -1,19 +1,23 @@
 # list of company employees
+# organisation is
+# employee:
+#   employee id : id
+#   employee turnover :
+#       then as a list by year ...
+#       year : value
 
-- employee:
-    name: frank
-    id: 003
+frank:
+    id: 3
     turnover:
-        - { year: 2011, value: 100000 }
-        - { year: 2012, value: 140000 }
-        - { year: 2013, value: 200000 }
+        - { 2011: 100000 }
+        - { 2012: 140000 }
+        - { 2013: 200000 }
 
-- employee:
-    name: jo
-    id: 004
+jo:
+    id: 4
     turnover:
-        - { year: 2012, value: 130000 }
-        - { year: 2013, value: 220000 }
-        - { year: 2014, value: 210000 }
+        - { 2012: 130000 }
+        - { 2013: 220000 }
+        - { 2014: 210000 }
 
 #EOF
