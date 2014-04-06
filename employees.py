@@ -54,7 +54,7 @@ class Employees:
                     total += sum(t.values())
         else:
             total = None
-        # return None if no entries for this name
+        # return None if no entries for this name and year
         return total
 
     def getAllByYear(self, year):
