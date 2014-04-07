@@ -6,12 +6,15 @@ Read Employee data to return turnover information.
 This is a example Python program to read and process YAML files.
 """
 
+from turnover import Turnover
+
 
 class Employees:
 
     """ Read Employee data to return turnover information. """
 
     def __init__(self, infile=None):
+        self.turnovers = None
         self.employees = None
         if infile is not None:
             self.loadFromFile(infile)
@@ -22,6 +25,14 @@ class Employees:
             self.employees = load(infile)
         else:
             self.employees = load(file(infile))
+        self.turnovers = []
+        for e in self.employees:
+            turnover = Turnover(e)
+            turnover.setId(self.employees.get(e).get('id'))
+            turnover.append(self.employees.get(e).get('turnover'))
+            self.turnovers.append(turnover)
+        for t in self.turnovers:
+            print t.id(), t.name(), t.__class__, t.__dict__.keys(), t
 
     def dump(self):
         from yaml import dump

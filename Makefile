@@ -6,16 +6,16 @@
 # - python -m unittest discover -v
 
 COVER_DIR = target/cover
-
+SRCS=employees.py main.py testemployees.py testturnover.py turnover.py 
 .PROXY: all
 
 all: check cover test doc
 
 check:
 	# Check with PyChecker
-	pychecker --only main.py employees.py testemployees.py
+	pychecker --only $(SRCS)
 	# Check with Pep8
-	pep8 main.py employees.py testemployees.py 
+	pep8 $(SRCS)
 
 cover:
 	# Run main module
@@ -26,6 +26,10 @@ cover:
 	python-coverage annotate employees.py
 	# Generate coverage report
 	python-coverage report --include=testemployees.py,employees.py,main.py 
+
+run:
+	# Run main
+	python main.py test.yml
 
 test:
 	# Run unit tests

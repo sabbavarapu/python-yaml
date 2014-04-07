@@ -23,12 +23,12 @@ class TestEmployees(unittest.TestCase):
     def testLoadFromFileName(self):
         employees = Employees()
         employees.loadFromFile(self.TEST_FILE)
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
 
     def testLoadFromFile(self):
         employees = Employees()
         employees.loadFromFile(file(self.TEST_FILE))
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
 
     def testDump(self):
         employees = Employees(self.TEST_FILE)
@@ -39,41 +39,41 @@ class TestEmployees(unittest.TestCase):
 
     def testTurnoverByName(self):
         employees = Employees(self.TEST_FILE)
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
         total = employees.getByName('frank')
         self.assertEqual(total, 100000 + 140000 + 200000)
 
     def testTurnoverById(self):
         employees = Employees(self.TEST_FILE)
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
         total = employees.getById(4)
         self.assertEqual(total, 130000 + 220000 + 210000)
 
     def testTurnoverByYear(self):
         employees = Employees(self.TEST_FILE)
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
         turnover = employees.getByYear(name='frank', year=2012)
         self.assertEqual(turnover, 140000)
 
     def testTurnoverAllByYear(self):
         employees = Employees(self.TEST_FILE)
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
         turnover = employees.getAllByYear(2012)
         self.assertEqual(turnover, 270000)
 
     def testNoId(self):
         employees = Employees(self.TEST_FILE)
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
         self.assertIsNone(employees.getById(001))
 
     def testNoName(self):
         employees = Employees(self.TEST_FILE)
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
         self.assertIsNone(employees.getByName('badname'))
 
     def testNoYear(self):
         employees = Employees(self.TEST_FILE)
-        self.assertIsNotNone(employees, 'expected employees')
+        self.assertIsNotNone(employees)
         turnover = employees.getAllByYear(2001)
         self.assertIsNone(turnover)
 

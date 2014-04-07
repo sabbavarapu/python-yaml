@@ -58,6 +58,8 @@ def main(argv=sys.argv):
     print employees.dump()
 
     print "Python type of employees ..............:", type(employees.employees)
+    print "Have employees ........................: %s" % (
+            ", ".join(employees.employees.keys()))
 
     t = employees.getByName('frank')
     print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))
