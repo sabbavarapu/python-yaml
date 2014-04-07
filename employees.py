@@ -17,22 +17,27 @@ class Employees:
         self.turnovers = None
         self.employees = None
         if infile is not None:
-            self.loadFromFile(infile)
+            self.load(infile)
+        # load into list of turnovers
+        self.turnovers = []
+        for e in self.employees:
+            turnover = Turnover()
+            turnover.name = e
+            turnover.id = self.employees.get(e).get('id')
+            for d in self.employees.get(e).get('turnover'):
+                turnover.add(d)
+            self.turnovers.append(turnover)
 
-    def loadFromFile(self, infile):
+    def load(self, infile):
         from yaml import load
         if isinstance(infile, file):
             self.employees = load(infile)
         else:
             self.employees = load(file(infile))
-        self.turnovers = []
-        for e in self.employees:
-            turnover = Turnover(e)
-            turnover.setId(self.employees.get(e).get('id'))
-            turnover.append(self.employees.get(e).get('turnover'))
-            self.turnovers.append(turnover)
+
+    def show(self):
         for t in self.turnovers:
-            print t.id(), t.name(), t.__class__, t.__dict__.keys(), t
+            print t.name, t.id, t.data
 
     def dump(self):
         from yaml import dump

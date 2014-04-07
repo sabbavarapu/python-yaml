@@ -20,14 +20,12 @@ class TestEmployees(unittest.TestCase):
         testFile = os.path.join(os.getcwd(), self.TEST_FILE)
         self.assertTrue(os.access(testFile, os.R_OK))
 
-    def testLoadFromFileName(self):
-        employees = Employees()
-        employees.loadFromFile(self.TEST_FILE)
+    def testLoadByName(self):
+        employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
 
-    def testLoadFromFile(self):
-        employees = Employees()
-        employees.loadFromFile(file(self.TEST_FILE))
+    def testLoadByFile(self):
+        employees = Employees(file(self.TEST_FILE))
         self.assertIsNotNone(employees)
 
     def testDump(self):

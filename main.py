@@ -56,10 +56,9 @@ def main(argv=sys.argv):
 
     print "\nDump YAML document ..."
     print employees.dump()
+    employees.show()
 
     print "Python type of employees ..............:", type(employees.employees)
-    print "Have employees ........................: %s" % (
-            ", ".join(employees.employees.keys()))
 
     t = employees.getByName('frank')
     print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))
