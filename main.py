@@ -54,9 +54,7 @@ def main(argv=sys.argv):
         print "\tverbose = %s" % (verbose)
         print "\tdata:\n%s" % (infile.read())
 
-    print "\nDump YAML document ..."
-    print employees.dump()
-    employees.show()
+    print "\nDump YAML document ..................:", employees.dump()
 
     print "Python type of employees ..............:", type(employees.employees)
 

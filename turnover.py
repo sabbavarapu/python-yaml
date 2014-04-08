@@ -2,13 +2,13 @@
 # coding=utf-8
 
 """
-Represents Employee turnover.
+Represents an employee turnover.
 """
 
 
-class Turnover:
+class Turnover(object):
 
-    """ Represents Employee turnover data. """
+    """ Represents an employees turnover data. """
 
     def __init__(self, name=None, id=None):
         self.name = name

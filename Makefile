@@ -6,7 +6,7 @@
 # - python -m unittest discover -v
 
 COVER_DIR = target/cover
-SRCS=main.py turnover.py testturnover.py employees.py testemployees.py
+SRCS=main.py turnover.py testturnover.py turnovers.py testturnovers.py employees.py testemployees.py
 .PROXY: all
 
 all: check cover test doc
@@ -25,9 +25,9 @@ cover:
 	# Run unit tests (append results)
 	python-coverage run -a --include=*employees.py testemployees.py
 	# Annotate file to see what has been tested
-	python-coverage annotate employees.py
+	python-coverage annotate employees.py turnover*.py 
 	# Generate coverage report
-	python-coverage report --include=testemployees.py,employees.py,main.py 
+	python-coverage report --include=*.py
 
 run:
 	# Run main

@@ -76,7 +76,7 @@ if __name__ == '__main__':
     # to get verbose output use '-v' option
     unittest.main()
     # the following gives verbose output by default
-    # suite = unittest.TestLoader().loadTestsFromTestCase(TestEmployees)
+    # suite = unittest.TestLoader().loadTestsFromTestCase(TestTurnover)
     # unittest.TextTestRunner(verbosity=2).run(suite)
 
 #EOF
