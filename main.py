@@ -49,14 +49,12 @@ def main(argv=sys.argv):
     # show command parameters
     if verbose:
         print "\nShow command line parameters ..."
-        print "\tinfile = %s" % (infile.name)
-        print "\tprog = %s" % (prog)
-        print "\tverbose = %s" % (verbose)
-        print "\tdata:\n%s" % (infile.read())
-
-    print "\nDump YAML document ..................:", employees.dump()
-
-    print "Python type of employees ..............:", type(employees.employees)
+        print "* infile = %s" % (infile.name)
+        print "* prog = %s" % (prog)
+        print "* verbose = %s" % (verbose)
+        infile.seek(0, 0)
+        print "* data:\n%s" % (infile.read())
+        print "* employees.dump:\n%s" % (employees.dump())
 
     t = employees.getByName('frank')
     print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))

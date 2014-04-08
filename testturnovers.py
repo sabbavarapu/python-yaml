@@ -2,7 +2,6 @@
 # coding=utf-8
 
 from turnovers import Turnovers
-from turnover import Turnover
 import os
 import unittest
 
@@ -19,21 +18,25 @@ class TestTurnovers(unittest.TestCase):
 
     def testName(self):
         turnovers = Turnovers(file(self.TEST_FILE))
-        self.assertIn('frank', [t['name'] for t in turnovers.employees])
-        self.assertIn('jo', [t['name'] for t in turnovers.employees])
+        names = list(t['name'] for t in turnovers.employees)
+        self.assertIn('frank', names)
+        self.assertIn('jo', names)
 
     def testBadName(self):
         turnovers = Turnovers(file(self.TEST_FILE))
-        self.assertNotIn('bond', [t['name'] for t in turnovers.employees])
+        names = list(t['name'] for t in turnovers.employees)
+        self.assertNotIn('bond', names)
 
     def testId(self):
         turnovers = Turnovers(file(self.TEST_FILE))
-        self.assertIn(3, [t['id'] for t in turnovers.employees])
-        self.assertIn(4, [t['id'] for t in turnovers.employees])
+        ids = list(t['id'] for t in turnovers.employees)
+        self.assertIn(3, ids)
+        self.assertIn(4, ids)
 
     def testBadId(self):
         turnovers = Turnovers(file(self.TEST_FILE))
-        self.assertNotIn(007, [t['id'] for t in turnovers.employees])
+        ids = list(t['id'] for t in turnovers.employees)
+        self.assertNotIn(007, ids)
 
     def testTotals(self):
         turnovers = Turnovers(file(self.TEST_FILE))

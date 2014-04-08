@@ -59,17 +59,22 @@ class TestEmployees(unittest.TestCase):
         turnover = employees.getAllByYear(2012)
         self.assertEqual(turnover, 270000)
 
-    def testNoId(self):
+    def testBadId(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
         self.assertIsNone(employees.getById(001))
 
-    def testNoName(self):
+    def testBadGetByName(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
         self.assertIsNone(employees.getByName('badname'))
 
-    def testNoYear(self):
+    def testBadByYearName(self):
+        employees = Employees(self.TEST_FILE)
+        self.assertIsNotNone(employees)
+        self.assertIsNone(employees.getByYear(name='badname', year=2012))
+
+    def testBadYear(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
         turnover = employees.getAllByYear(2001)

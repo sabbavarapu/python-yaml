@@ -3,7 +3,10 @@
 Unit Tests
 ==========
 
-Here I am using the default Python :ref:`unittest <references>` suite.
+Here I am using the default Python :ref:`unittest <references>` suite. A list
+of unit test assert methods is `here
+<https://docs.python.org/2/library/unittest.html#classes-and-functions>`_
+
 To run the unit tests using::
 
     python-coverage run -a --include=testemployees.py,employees.py testemployees.py

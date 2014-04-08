@@ -10,6 +10,7 @@ EMPTY:=
 SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
+# srcs used by pychecker
 SRCS=main.py turnovers.py testturnovers.py employees.py testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
@@ -32,8 +33,8 @@ cover:
 	python-coverage run -a --include=employees.py testemployees.py
 	# Annotate file to see what has been tested
 	python-coverage annotate turnovers.py employees.py
-	# Generate coverage report
-	python-coverage report --include=$(SRCS_LIST)
+	# Generate unit test coverage report
+	python-coverage report --include=*.py
 
 run:
 	# Run main

@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # coding=utf-8
 
-from turnover import Turnover
-
 
 class Turnovers(object):
 
@@ -31,7 +29,8 @@ class Turnovers(object):
                 self.employees.append(t)
 
     def total(self, year):
-        return sum(list(y.values()[0] for y in self.years if y.keys()[0] == year))
+        values = list(y.values()[0] for y in self.years if y.keys()[0] == year)
+        return sum(values)
 
     def dump(self):
         return self.employees
