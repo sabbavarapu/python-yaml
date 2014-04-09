@@ -49,18 +49,21 @@ def main(argv=sys.argv):
     # show command parameters
     if verbose:
         print "\nShow command line parameters ..."
-        print "* infile = %s" % (infile.name)
-        print "* prog = %s" % (prog)
-        print "* verbose = %s" % (verbose)
+        print " infile = %s" % (infile.name)
+        print " prog = %s" % (prog)
+        print " verbose = %s" % (verbose)
         infile.seek(0, 0)
-        print "* data:\n%s" % (infile.read())
-        print "* employees.dump:\n%s" % (employees.dump())
+        print " data:\n%s" % (infile.read())
+        print " employees.dump:\n%s" % (employees.dump())
 
     t = employees.getByName('frank')
     print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))
 
-    t = employees.getById(4)
-    print "Turnover for employee id 4 ............: %s" % ("${:,}".format(t))
+    t = employees.getName(3)
+    print "Employee name for id 3 ................: %s" % (t)
+
+    t = employees.getName(4)
+    print "Employee name for id 4 ................: %s" % (t)
 
     t = employees.getByYear('frank', 2012)
     print "Turnover for employee 'frank' in 2012 .: %s" % ("${:,}".format(t))

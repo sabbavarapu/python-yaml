@@ -31,54 +31,59 @@ class TestEmployees(unittest.TestCase):
     def testDump(self):
         employees = Employees(self.TEST_FILE)
         dump = employees.dump()
-        count = len(dump.split('\n'))
-        self.assertEqual(
-            count, 13, "expected %i lines dump, got %i" % (13, count))
+        self.assertTrue(7, len(dump.split('\n')))
+        self.assertIn('frank:', dump)
+        self.assertIn('jo:', dump)
 
-    def testTurnoverByName(self):
+    def testByName(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
-        total = employees.getByName('frank')
-        self.assertEqual(total, 100000 + 140000 + 200000)
+        self.assertTrue(440000, employees.getByName('frank'))
+        self.assertTrue(560000, employees.getByName('jo'))
 
-    def testTurnoverById(self):
+    def testName(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
-        total = employees.getById(4)
-        self.assertEqual(total, 130000 + 220000 + 210000)
+        self.assertEqual('frank', employees.getName(3))
+        self.assertEqual('jo', employees.getName(4))
 
-    def testTurnoverByYear(self):
+    def testByYear(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
-        turnover = employees.getByYear(name='frank', year=2012)
-        self.assertEqual(turnover, 140000)
+        self.assertTrue(100000, employees.getByYear(name='frank', year=2011))
+        self.assertTrue(140000, employees.getByYear(name='frank', year=2012))
+        self.assertTrue(200000, employees.getByYear(name='frank', year=2013))
+        self.assertTrue(130000, employees.getByYear(name='jo', year=2012))
+        self.assertTrue(220000, employees.getByYear(name='jo', year=2013))
+        self.assertTrue(210000, employees.getByYear(name='jo', year=2014))
 
-    def testTurnoverAllByYear(self):
+    def testAllByYear(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
-        turnover = employees.getAllByYear(2012)
-        self.assertEqual(turnover, 270000)
+        self.assertTrue(100000, employees.getAllByYear(2011))
+        self.assertTrue(270000, employees.getAllByYear(2012))
+        self.assertTrue(420000, employees.getAllByYear(2013))
+        self.assertTrue(210000, employees.getAllByYear(2014))
 
     def testBadId(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
-        self.assertIsNone(employees.getById(001))
+        self.assertIsNone(employees.getName(1))
 
     def testBadGetByName(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
         self.assertIsNone(employees.getByName('badname'))
 
-    def testBadByYearName(self):
+    def testBadAllByYearName(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
         self.assertIsNone(employees.getByYear(name='badname', year=2012))
 
-    def testBadYear(self):
+    def testBadAllByYearYear(self):
         employees = Employees(self.TEST_FILE)
         self.assertIsNotNone(employees)
-        turnover = employees.getAllByYear(2001)
-        self.assertIsNone(turnover)
+        self.assertEqual(0, employees.getAllByYear(1999))
 
     def tearDown(self):
         pass

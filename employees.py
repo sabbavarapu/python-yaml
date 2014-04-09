@@ -27,46 +27,40 @@ class Employees:
         from yaml import dump
         return dump(self.employees, encoding=('utf-8'))
 
-    def getById(self, eid):
-        """ Returns turnover for all years for an employee. """
-        t = [self.getByName(e) for e in self.employees.keys() if
-             self.employees.get(e).get('id') == int(eid)]
-        # return None if no entries for this Id
-        return t and t[0] or None
+    def getName(self, eid):
+        """ Returns name of employee by id. """
+        name = None
+        for n in self.employees.keys():
+            if eid == self.employees.get(n).get('id'):
+                name = n
+                break
+        return name
 
     def getByName(self, name):
         """ Returns turnover for all years for an employee. """
-        if self.employees.get(name):
+        try:
             total = 0
             for t in self.employees.get(name).get('turnover'):
-                total += sum(t.values())
-        else:
+                total += self.employees.get(name).get('turnover').get(t)
+        except:
             total = None
-        # return None if no entries for this name
         return total
 
     def getByYear(self, name, year):
         """ Returns turnover for an employees by year. """
-        if self.employees.get(name):
-            total = 0
-            for t in self.employees.get(name).get('turnover'):
-                if t.get(year):
-                    total += sum(t.values())
-        else:
+        try:
+            total = sum(list(self.employees.get(name).get('turnover').get(t)
+                for t in self.employees.get(name).get('turnover')
+                if t == year))
+        except:
             total = None
-        # return None if no entries for this name and year
         return total
 
     def getAllByYear(self, year):
         """ Returns turnover for all employees by year. """
-        count = 0
         total = 0
-        for n in self.employees.values():
-            for t in n.get('turnover'):
-                if t.get(year):
-                    total += sum(t.values())
-                    count += 1
-        # return None if no entries for this year
-        return count and total or None
+        for name in self.employees.keys():
+            total += self.getByYear(name, year)
+        return total
 
 #EOF

@@ -11,7 +11,7 @@ SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
 # srcs used by pychecker
-SRCS=main.py turnovers.py testturnovers.py employees.py testemployees.py
+SRCS=main.py employees.py testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 .PROXY: all
@@ -28,13 +28,11 @@ cover:
 	# Run main module
 	python-coverage run --include=main.py,employees.py main.py -v test.yml
 	# Run unit tests (append results)
-	python-coverage run -a --include=turnovers.py testturnovers.py
-	# Run unit tests (append results)
 	python-coverage run -a --include=employees.py testemployees.py
 	# Annotate file to see what has been tested
-	python-coverage annotate turnovers.py employees.py
+	python-coverage annotate employees.py
 	# Generate unit test coverage report
-	python-coverage report --include=*.py
+	python-coverage report --include=${SRCS_LIST}
 
 run:
 	# Run main
