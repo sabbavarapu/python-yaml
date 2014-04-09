@@ -50,8 +50,8 @@ class Employees:
         """ Returns turnover for an employees by year. """
         try:
             total = sum(list(self.employees.get(name).get('turnover').get(t)
-                for t in self.employees.get(name).get('turnover')
-                if t == year))
+                        for t in self.employees.get(name).get('turnover')
+                        if t == year))
         except:
             total = None
         return total

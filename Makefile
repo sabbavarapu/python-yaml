@@ -52,7 +52,7 @@ doc: force_doc
 clean:
 	# Cleaning workspace
 	$(RM) -f *,cover
-	$(RM) -f *.pyc
+	$(RM) -f *.pyc *.pyo
 	$(RM) -rf target
 	python-coverage erase
 	(cd doc; make clean)
