@@ -26,11 +26,12 @@ check:
 
 cover:
 	# Run main module
-	python-coverage run --include=main.py,employees.py main.py -v test.yml
+	python-coverage run --include=main.py,employees.py main.py
+	python-coverage run -a --include=main.py,employees.py main.py -v test.yml
 	# Run unit tests (append results)
 	python-coverage run -a --include=employees.py testemployees.py
 	# Annotate file to see what has been tested
-	python-coverage annotate employees.py
+	python-coverage annotate employees.py main.py
 	# Generate unit test coverage report
 	python-coverage report --include=${SRCS_LIST}
 

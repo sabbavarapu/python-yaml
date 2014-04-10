@@ -8,6 +8,7 @@ This is a example Python program to read and process YAML files.
 
 from employees import Employees
 import argparse
+import logging
 import os.path
 import sys
 
@@ -43,42 +44,46 @@ def main(argv=sys.argv):
     infile = args.infile
     verbose = args.verbose
 
+    # show command parameters
+    if verbose:
+        logging.basicConfig(level=logging.DEBUG)
+    else:
+        logging.basicConfig(level=logging.INFO)
+
     # load employees from YAML
     e = Employees(infile)
 
-    # show command parameters
-    if verbose:
-        print "\nShow command line parameters ..."
-        print " infile = %s" % (infile.name)
-        print " prog = %s" % (prog)
-        print " verbose = %s" % (verbose)
-        infile.seek(0, 0)
-        print " data:\n%s" % (infile.read())
-        print " dump:\n%s" % (e.dump())
+    logging.debug("infile ......................: %s" % (infile.name))
+    logging.debug("prog ........................: %s" % (prog))
+    logging.debug("verbose .....................: %s" % (verbose))
 
     t = e.getName(3)
-    print "Employee name for id 3 ................: %s" % (t)
+    logging.debug("name for id 3 ...............: %s" % t)
 
     t = e.getName(4)
-    print "Employee name for id 4 ................: %s" % (t)
+    logging.debug("name for id 4 ...............: %s" % t)
 
     t = e.getByName('frank')
-    print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))
+    # s = "${:,}".format(t)
+    logging.debug("turnover for frank ..........: ${:,}".format(t))
 
     t = e.getByYear('frank', 2012)
-    print "Turnover for frank in 2012 ............: %s" % ("${:,}".format(t))
+    # s = "${:,}".format(t)
+    logging.debug("turnover for frank in 2012 ..: ${:,}".format(t))
 
     t = e.getAllByYear(2012)
-    print "Turnover for all in 2012 ..............: %s" % ("${:,}".format(t))
+    # s = "${:,}".format(t)
+    logging.debug("turnover for all in 2012 ....: ${:,}".format(t))
 
     t = list(e.listByName('frank'))
-    print "List frank years ......................: %s" % (t)
+    logging.debug("list frank years ............: %s" % t)
 
     t = list(e.listByYear(2013))
-    print "List turnover for 2013 ................: %s" % (t)
+    logging.debug("list turnover for 2013 ......: %s" % t)
 
     t = e.listByYear(1999)
-    print "Expect none for 1999 ..................:", t
+    logging.debug("expect none for 1999 ........: %s" % t)
+
 
 #
 # MAIN
