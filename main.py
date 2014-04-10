@@ -6,8 +6,8 @@ Read Employee data to return turnover information.
 This is a example Python program to read and process YAML files.
 """
 
-import argparse
 from employees import Employees
+import argparse
 import os.path
 import sys
 
@@ -44,7 +44,7 @@ def main(argv=sys.argv):
     verbose = args.verbose
 
     # load employees from YAML
-    employees = Employees(infile)
+    e = Employees(infile)
 
     # show command parameters
     if verbose:
@@ -54,23 +54,31 @@ def main(argv=sys.argv):
         print " verbose = %s" % (verbose)
         infile.seek(0, 0)
         print " data:\n%s" % (infile.read())
-        print " employees.dump:\n%s" % (employees.dump())
+        print " dump:\n%s" % (e.dump())
 
-    t = employees.getByName('frank')
-    print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))
-
-    t = employees.getName(3)
+    t = e.getName(3)
     print "Employee name for id 3 ................: %s" % (t)
 
-    t = employees.getName(4)
+    t = e.getName(4)
     print "Employee name for id 4 ................: %s" % (t)
 
-    t = employees.getByYear('frank', 2012)
-    print "Turnover for employee 'frank' in 2012 .: %s" % ("${:,}".format(t))
+    t = e.getByName('frank')
+    print "Turnover for employee name 'frank' ....: %s" % ("${:,}".format(t))
 
-    t = employees.getAllByYear(2012)
+    t = e.getByYear('frank', 2012)
+    print "Turnover for frank in 2012 ............: %s" % ("${:,}".format(t))
+
+    t = e.getAllByYear(2012)
     print "Turnover for all in 2012 ..............: %s" % ("${:,}".format(t))
 
+    t = list(e.listByName('frank'))
+    print "List frank years ......................: %s" % (t)
+
+    t = list(e.listByYear(2013))
+    print "List turnover for 2013 ................: %s" % (t)
+
+    t = e.listByYear(1999)
+    print "Expect none for 1999 ..................:", t
 
 #
 # MAIN
