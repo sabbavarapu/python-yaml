@@ -2,7 +2,6 @@
 #
 # You can run unittests using ...
 # - python testemployees.py
-# - unit2 discover -v
 # - python -m unittest discover -v
 
 COMMA:= ,
@@ -41,7 +40,10 @@ run:
 
 test:
 	# Run unit tests
-	python -m unittest discover -v
+	# python -m unittest discover -v
+	nosetests testemployees.py -v
+	mkdir -p target/tests
+	mv results.html target/tests
 
 doc: force_doc
 	# Creating coverage HTML report
@@ -54,6 +56,7 @@ clean:
 	# Cleaning workspace
 	$(RM) -f *,cover
 	$(RM) -f *.pyc *.pyo
+	$(RM) -f results.html
 	$(RM) -rf target
 	python-coverage erase
 	(cd doc; make clean)

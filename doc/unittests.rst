@@ -3,8 +3,11 @@
 Unit Tests
 ==========
 
-Here I am using the default Python :ref:`unittest <references>` suite. A list
-of unit test assert methods is `here
+Here are the `unit tests results <_static/results.html>`_ for this project.
+
+This is using the default Python :ref:`unittest <references>` suite, but using
+:ref:`nosetests <references>` to produce nice HTML output. A list of unit test
+assert methods is `here
 <https://docs.python.org/2/library/unittest.html#classes-and-functions>`_
 
 To run the unit tests using::
@@ -17,24 +20,32 @@ Or::
 
 Or::
 
-	unit2 discover -v
+	nosetests testemployees.py
 
 The basic report of unit test results is::
 
+    # Run unit tests
+    # python -m unittest discover -v
+    nosetests testemployees.py -v
+    testAllByYear (testemployees.TestEmployees) ... ok
+    testBadAllByYear (testemployees.TestEmployees) ... ok
+    testBadByName (testemployees.TestEmployees) ... ok
+    testBadId (testemployees.TestEmployees) ... ok
+    testBadListByName (testemployees.TestEmployees) ... ok
+    testBadListByYear (testemployees.TestEmployees) ... ok
+    testBadNameByYear (testemployees.TestEmployees) ... ok
+    testBadYearByYear (testemployees.TestEmployees) ... ok
+    testByName (testemployees.TestEmployees) ... ok
+    testByYear (testemployees.TestEmployees) ... ok
     testDump (testemployees.TestEmployees) ... ok
-    testIdContains (testemployees.TestEmployees) ... ok
-    testLoadFromFile1 (testemployees.TestEmployees) ... ok
-    testLoadFromFile2 (testemployees.TestEmployees) ... ok
-    testNameContains (testemployees.TestEmployees) ... ok
-    testNoId (testemployees.TestEmployees) ... ok
-    testNoName (testemployees.TestEmployees) ... ok
-    testTurnoverAllByYear (testemployees.TestEmployees) ... ok
-    testTurnoverByName (testemployees.TestEmployees) ... ok
-    testTurnoverByYear (testemployees.TestEmployees) ... ok
-    testZeroTurnover (testemployees.TestEmployees) ... ok
+    testListByName (testemployees.TestEmployees) ... ok
+    testListByYear (testemployees.TestEmployees) ... ok
+    testLoadByFile (testemployees.TestEmployees) ... ok
+    testLoadByName (testemployees.TestEmployees) ... ok
+    testName (testemployees.TestEmployees) ... ok
 
     ----------------------------------------------------------------------
-    Ran 11 tests in 0.090s
+    Ran 16 tests in 0.052s
 
     OK
 

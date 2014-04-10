@@ -3,6 +3,6 @@
 Unit Test Coverage
 ==================
 
-See unit test reports for this project are `here <_static/index.html>`_.
+Here are `test coverage reports <_static/index.html>`_ for this project.
 
 .. EOF

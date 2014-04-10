@@ -1,6 +1,7 @@
 *,cover
 .coverage
 htmlcov/
+.noseids
 *.pyc
 *.pyo
 .Python

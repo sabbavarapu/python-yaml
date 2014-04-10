@@ -45,51 +45,47 @@ def main(argv=sys.argv):
     verbose = args.verbose
 
     # show command parameters
+    logging.basicConfig(format="%(asctime)s %(message)s", level=logging.INFO)
+    logger = logging.getLogger(__name__)
     if verbose:
-        logging.basicConfig(level=logging.DEBUG)
-    else:
-        logging.basicConfig(level=logging.INFO)
+        logger.setLevel(logging.DEBUG)
 
     # load employees from YAML
     e = Employees(infile)
 
-    logging.debug("infile ......................: %s" % (infile.name))
-    logging.debug("prog ........................: %s" % (prog))
-    logging.debug("verbose .....................: %s" % (verbose))
+    logger.debug("infile ......................: %s" % (infile.name))
+    logger.debug("prog ........................: %s" % (prog))
+    logger.debug("verbose .....................: %s" % (verbose))
 
     t = e.getName(3)
-    logging.debug("name for id 3 ...............: %s" % t)
-
-    t = e.getName(4)
-    logging.debug("name for id 4 ...............: %s" % t)
+    logger.debug("name for id 3 ...............: %s" % t)
 
     t = e.getByName('frank')
     # s = "${:,}".format(t)
-    logging.debug("turnover for frank ..........: ${:,}".format(t))
+    logger.debug("turnover for frank ..........: ${:,}".format(t))
 
     t = e.getByYear('frank', 2012)
     # s = "${:,}".format(t)
-    logging.debug("turnover for frank in 2012 ..: ${:,}".format(t))
+    logger.debug("turnover for frank in 2012 ..: ${:,}".format(t))
 
     t = e.getAllByYear(2012)
     # s = "${:,}".format(t)
-    logging.debug("turnover for all in 2012 ....: ${:,}".format(t))
+    logger.debug("turnover for all in 2012 ....: ${:,}".format(t))
 
     t = list(e.listByName('frank'))
-    logging.debug("list frank years ............: %s" % t)
+    logger.debug("list frank years ............: %s" % t)
 
     t = list(e.listByYear(2013))
-    logging.debug("list turnover for 2013 ......: %s" % t)
+    logger.debug("list turnover for 2013 ......: %s" % t)
 
-    t = e.listByYear(1999)
-    logging.debug("expect none for 1999 ........: %s" % t)
+    return 0
 
 
 #
 # MAIN
 #
 if __name__ == '__main__':
-    main(sys.argv)
-    sys.exit(0)
+    rc = main(sys.argv)
+    sys.exit(rc)
 
 #EOF
