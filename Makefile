@@ -55,6 +55,7 @@ doc: force_doc
 clean:
 	# Cleaning workspace
 	$(RM) -f *,cover
+	$(RM) -f .noseids
 	$(RM) -f *.pyc *.pyo
 	$(RM) -f results.html
 	$(RM) -rf target
