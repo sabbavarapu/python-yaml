@@ -57,16 +57,6 @@ class TestEmployees(unittest.TestCase):
         self.assertEquals(220000, e.getByYear(name='jo', year=2013))
         self.assertEquals(210000, e.getByYear(name='jo', year=2014))
 
-    def testByYearReduce(self):
-        e = Employees(self.TEST_FILE)
-        self.assertIsNotNone(e)
-        self.assertEquals(100000, e.getByYearReduce(name='frank', year=2011))
-        self.assertEquals(140000, e.getByYearReduce(name='frank', year=2012))
-        self.assertEquals(200000, e.getByYearReduce(name='frank', year=2013))
-        self.assertEquals(130000, e.getByYearReduce(name='jo', year=2012))
-        self.assertEquals(220000, e.getByYearReduce(name='jo', year=2013))
-        self.assertEquals(210000, e.getByYearReduce(name='jo', year=2014))
-
     def testAllByYear(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
@@ -113,16 +103,6 @@ class TestEmployees(unittest.TestCase):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
         self.assertEqual(0, e.getByYear(name='frank', year=1999))
-
-    def testBadNameByYearReduce(self):
-        e = Employees(self.TEST_FILE)
-        self.assertIsNotNone(e)
-        self.assertIsNone(e.getByYearReduce(name='badname', year=2012))
-
-    def testBadYearByYearReduce(self):
-        e = Employees(self.TEST_FILE)
-        self.assertIsNotNone(e)
-        self.assertIsNone(e.getByYearReduce(name='frank', year=1999))
 
     def testBadAllByYear(self):
         e = Employees(self.TEST_FILE)

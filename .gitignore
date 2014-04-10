@@ -2,6 +2,7 @@
 .coverage
 htmlcov/
 *.pyc
+*.pyo
 .Python
 *.swp
 target/
