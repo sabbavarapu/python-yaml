@@ -5,5 +5,6 @@ htmlcov/
 *.pyc
 *.pyo
 .Python
+results.html
 *.swp
 target/
