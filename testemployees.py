@@ -1,5 +1,5 @@
-#!/usr/bin/python
-# coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
 Run unit tests for YAML file processing example, Employees.
