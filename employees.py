@@ -23,7 +23,7 @@ class Employees:
 
     def filterByYear(self, year):
         """ filter by year """
-        for n in self.employees:
+        for n in self.employees.keys():
             if year in self.employees.get(n).get('turnover'):
                 yield self.employees.get(n).get('turnover').get(year)
 
@@ -49,11 +49,16 @@ class Employees:
 
     def getByName(self, name):
         """ Returns turnover for all years for an employee. """
-        try:
+        if not name in self.employees.keys():
+            total = None
+        else:
             total = sum(self.employees.get(name).get('turnover').get(t)
                         for t in self.filterByName(name))
-        except:
-            total = None
+        #try:
+        #    total = sum(self.employees.get(name).get('turnover').get(t)
+        #                for t in self.filterByName(name))
+        #except:
+        #    total = None
         return total
 
     def listByYear(self, year):
@@ -65,20 +70,30 @@ class Employees:
 
     def listByName(self, name):
         """ List turnover by employee. """
-        try:
-            years = list(self.filterByName(name))
-        except:
+        if not name in self.employees.keys():
             years = None
+        else:
+            years = list(self.filterByName(name))
+        #try:
+        #    years = list(self.filterByName(name))
+        #except:
+        #    years = None
         return years
 
     def getByYear(self, name, year):
         """ Returns turnover for an employees by year. """
-        try:
+        if not name in self.employees.keys():
+            total = None
+        else:
             total = sum(self.employees.get(name).get('turnover').get(t)
                         for t in self.filterByName(name)
                         if t == year)
-        except:
-            total = None
+        #try:
+        #    total = sum(self.employees.get(name).get('turnover').get(t)
+        #                for t in self.filterByName(name)
+        #                if t == year)
+        #except:
+        #    total = None
         return total
 
     def getAllByYear(self, year):

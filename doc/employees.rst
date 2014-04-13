@@ -3,6 +3,10 @@
 Employees
 =========
 
+.. automodule:: employees
+   :members:
+
+
 Help on module employees::
 
     NAME
@@ -53,8 +57,5 @@ Help on module employees::
         |  
         |  load(self, infile)
 
-
-.. automodule:: employees
-   :members:
 
 .. EOF

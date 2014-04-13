@@ -10,7 +10,7 @@ SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
 # srcs used by pychecker
-SRCS=main.py employees.py testemployees.py
+SRCS=main.py employees.py tests/testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 .PROXY: all
@@ -28,7 +28,7 @@ cover:
 	python-coverage run --include=main.py,employees.py main.py
 	python-coverage run -a --include=main.py,employees.py main.py -v test.yml
 	# Run unit tests (append results)
-	python-coverage run -a --include=employees.py testemployees.py
+	python-coverage run -a --include=main.py,employees.py -m tests.testemployees
 	# Annotate file to see what has been tested
 	python-coverage annotate employees.py main.py
 	# Generate unit test coverage report
@@ -41,9 +41,11 @@ run:
 test:
 	# Run unit tests
 	# python -m unittest discover -v
-	nosetests testemployees.py -v
+	# list nodetests plugins using nosetests --plugins -vv
+	# make directory for HTML test results
 	mkdir -p target/tests
-	mv results.html target/tests
+	# search tests directory
+	nosetests --config=nosetests.cfg --verbose --where $(PWD) tests/test*.py
 
 doc: force_doc
 	# Creating coverage HTML report
@@ -58,6 +60,7 @@ clean:
 	$(RM) -f .noseids
 	$(RM) -f *.pyc *.pyo
 	$(RM) -f results.html
+	$(RM) -f tests/*.pyc tests/*.pyo
 	$(RM) -rf target
 	python-coverage erase
 	(cd doc; make clean)

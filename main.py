@@ -36,7 +36,7 @@ def main(argv=sys.argv):
     parser.add_argument(
         '--version',
         action='version',
-        version='%(prog)s 0.0.1')
+        version='%(prog)s 0.1.0')
 
     # process command line arguments
     args = parser.parse_args()
@@ -53,12 +53,12 @@ def main(argv=sys.argv):
     # load employees from YAML
     e = Employees(infile)
 
-    logger.debug("infile ......................: %s" % (infile.name))
-    logger.debug("prog ........................: %s" % (prog))
-    logger.debug("verbose .....................: %s" % (verbose))
+    logger.debug("infile ......................: {s}".format(s=infile.name))
+    logger.debug("prog ........................: {s}".format(s=prog))
+    logger.debug("verbose .....................: {s}".format(s=verbose))
 
     t = e.getName(3)
-    logger.debug("name for id 3 ...............: %s" % t)
+    logger.debug("name for id 3 ...............: {s}".format(s=t))
 
     t = e.getByName('frank')
     # s = "${:,}".format(t)
@@ -73,10 +73,10 @@ def main(argv=sys.argv):
     logger.debug("turnover for all in 2012 ....: ${:,}".format(t))
 
     t = list(e.listByName('frank'))
-    logger.debug("list frank years ............: %s" % t)
+    logger.debug("list frank years ............: {s}".format(s=t))
 
     t = list(e.listByYear(2013))
-    logger.debug("list turnover for 2013 ......: %s" % t)
+    logger.debug("list turnover for 2013 ......: {s}".format(s=t))
 
     return 0
 

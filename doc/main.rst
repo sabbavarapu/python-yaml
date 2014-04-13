@@ -16,10 +16,28 @@ Help on module main::
       This is a example Python program to read and process YAML files.
 
    FUNCTIONS
-      main(argv=['/usr/bin/pydoc', 'main'])
+      main(argv)
          Test employees class.
 
 The :download:`main <../main.py>` module exists just to test the
 :ref:`employees` class from command line.
+
+There is also help using the ``-h`` option::
+
+    python main.py -h
+    usage: main.py [options]
+
+    a Python example program to show YAML processing
+
+    positional arguments:
+    infile         alternate YAML file to test
+
+    optional arguments:
+    -h, --help     show this help message and exit
+    -v, --verbose  verbose output
+    --version      show program's version number and exit
+
+    © 2014 Frank H Jung mailto:frankhjung@linux.com
+
 
 .. EOF
