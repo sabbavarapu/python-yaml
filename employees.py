@@ -16,10 +16,17 @@ class Employees:
         if infile is not None:
             self.load(infile)
 
+    def filterById(self, eid):
+        """ filter by id """
+        for n in self.employees.keys():
+            if eid == self.employees.get(n).get('id'):
+                for t in self.employees.get(n).get('turnover'):
+                    yield self.employees.get(n).get('turnover').get(t)
+
     def filterByName(self, name):
         """ filter by name """
         for t in self.employees.get(name).get('turnover'):
-            yield t
+            yield self.employees.get(name).get('turnover').get(t)
 
     def filterByYear(self, year):
         """ filter by year """
@@ -47,60 +54,66 @@ class Employees:
                 break
         return name
 
-    def getByName(self, name):
-        """ Returns turnover for all years for an employee. """
-        if not name in self.employees.keys():
-            total = None
+    def getById(self, eid):
+        """ Returns turnover for all years for an employee by id. """
+        turnovers = list(self.filterById(eid))
+        if len(turnovers) > 0:
+            total = sum(turnovers)
         else:
-            total = sum(self.employees.get(name).get('turnover').get(t)
-                        for t in self.filterByName(name))
-        #try:
-        #    total = sum(self.employees.get(name).get('turnover').get(t)
-        #                for t in self.filterByName(name))
-        #except:
-        #    total = None
+            total = None
         return total
 
-    def listByYear(self, year):
-        """ List turnover by year. """
-        turnovers = list(self.filterByYear(year))
-        if not turnovers:
+    def getByName(self, name):
+        """ Returns turnover for all years for an employee by name. """
+        if name in self.employees.keys():
+            total = sum(self.filterByName(name))
+        else:
+            total = None
+        return total
+
+    def getByYear(self, year):
+        """ Returns turnover for all employees by year. """
+        total = sum(self.filterByYear(year))
+        return total
+
+    def getForNameByYear(self, name, year):
+        """ Returns turnover for an employee for a specific year. """
+        if name in self.employees.keys():
+            turnovers = list(self.employees.get(name).get('turnover').get(t)
+                             for t in self.employees.get(name).get('turnover')
+                             if t == year)
+            if len(turnovers) > 0:
+                total = sum(turnovers)
+            else:
+                total = None
+        else:
+            total = None
+        return total
+
+    def listById(self, eid):
+        """ List turnover by id. """
+        turnovers = list(self.filterById(eid))
+        if len(turnovers) > 0:
+            pass
+        else:
             turnovers = None
         return turnovers
 
     def listByName(self, name):
-        """ List turnover by employee. """
-        if not name in self.employees.keys():
-            years = None
+        """ List turnover by name. """
+        if name in self.employees.keys():
+            turnovers = list(self.filterByName(name))
         else:
-            years = list(self.filterByName(name))
-        #try:
-        #    years = list(self.filterByName(name))
-        #except:
-        #    years = None
-        return years
+            turnovers = None
+        return turnovers
 
-    def getByYear(self, name, year):
-        """ Returns turnover for an employees by year. """
-        if not name in self.employees.keys():
-            total = None
+    def listByYear(self, year):
+        """ List turnover by year. """
+        turnovers = list(self.filterByYear(year))
+        if len(turnovers) > 0:
+            pass
         else:
-            total = sum(self.employees.get(name).get('turnover').get(t)
-                        for t in self.filterByName(name)
-                        if t == year)
-        #try:
-        #    total = sum(self.employees.get(name).get('turnover').get(t)
-        #                for t in self.filterByName(name)
-        #                if t == year)
-        #except:
-        #    total = None
-        return total
-
-    def getAllByYear(self, year):
-        """ Returns turnover for all employees by year. """
-        # from functools import reduce
-        total = sum(self.getByYear(name, year)
-                    for name in self.employees.keys())
-        return total
+            turnovers = None
+        return turnovers
 
 #EOF

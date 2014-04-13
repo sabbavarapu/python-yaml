@@ -56,27 +56,28 @@ def main(argv=sys.argv):
     logger.debug("infile ......................: {s}".format(s=infile.name))
     logger.debug("prog ........................: {s}".format(s=prog))
     logger.debug("verbose .....................: {s}".format(s=verbose))
+    logger.debug("employees ...................: {s}".format(s=e.employees))
 
     t = e.getName(3)
     logger.debug("name for id 3 ...............: {s}".format(s=t))
 
+    t = e.getById(3)
+    logger.debug("turnover for 3 ..............: ${:,}".format(t))
+
     t = e.getByName('frank')
-    # s = "${:,}".format(t)
     logger.debug("turnover for frank ..........: ${:,}".format(t))
 
-    t = e.getByYear('frank', 2012)
-    # s = "${:,}".format(t)
-    logger.debug("turnover for frank in 2012 ..: ${:,}".format(t))
+    t = e.getByYear(2012)
+    logger.debug("turnover for 2012 ...........: ${:,}".format(t))
 
-    t = e.getAllByYear(2012)
-    # s = "${:,}".format(t)
-    logger.debug("turnover for all in 2012 ....: ${:,}".format(t))
+    t = list(e.listById(3))
+    logger.debug("list turnover by id .........: {s}".format(s=t))
 
     t = list(e.listByName('frank'))
-    logger.debug("list frank years ............: {s}".format(s=t))
+    logger.debug("list turnover by name .......: {s}".format(s=t))
 
     t = list(e.listByYear(2013))
-    logger.debug("list turnover for 2013 ......: {s}".format(s=t))
+    logger.debug("list turnover by year .......: {s}".format(s=t))
 
     return 0
 

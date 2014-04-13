@@ -47,23 +47,43 @@ class TestEmployees(unittest.TestCase):
         self.assertEquals(440000, e.getByName('frank'))
         self.assertEquals(560000, e.getByName('jo'))
 
+    def testForNameByYear(self):
+        e = Employees(self.TEST_FILE)
+        self.assertIsNotNone(e)
+        self.assertEquals(100000, e.getForNameByYear(name='frank', year=2011))
+        self.assertEquals(140000, e.getForNameByYear(name='frank', year=2012))
+        self.assertEquals(200000, e.getForNameByYear(name='frank', year=2013))
+        self.assertEquals(130000, e.getForNameByYear(name='jo', year=2012))
+        self.assertEquals(220000, e.getForNameByYear(name='jo', year=2013))
+        self.assertEquals(210000, e.getForNameByYear(name='jo', year=2014))
+
     def testByYear(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
-        self.assertEquals(100000, e.getByYear(name='frank', year=2011))
-        self.assertEquals(140000, e.getByYear(name='frank', year=2012))
-        self.assertEquals(200000, e.getByYear(name='frank', year=2013))
-        self.assertEquals(130000, e.getByYear(name='jo', year=2012))
-        self.assertEquals(220000, e.getByYear(name='jo', year=2013))
-        self.assertEquals(210000, e.getByYear(name='jo', year=2014))
+        self.assertEquals(100000, e.getByYear(2011))
+        self.assertEquals(270000, e.getByYear(2012))
+        self.assertEquals(420000, e.getByYear(2013))
+        self.assertEquals(210000, e.getByYear(2014))
 
-    def testAllByYear(self):
+    def testListById(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
-        self.assertEquals(100000, e.getAllByYear(2011))
-        self.assertEquals(270000, e.getAllByYear(2012))
-        self.assertEquals(420000, e.getAllByYear(2013))
-        self.assertEquals(210000, e.getAllByYear(2014))
+        turnovers = list(e.listById(3))
+        self.assertEquals(3, len(turnovers))
+        self.assertIn(100000, turnovers)
+        self.assertIn(140000, turnovers)
+        self.assertIn(200000, turnovers)
+        self.assertNotIn(220000, turnovers)
+
+    def testListByName(self):
+        e = Employees(self.TEST_FILE)
+        self.assertIsNotNone(e)
+        turnovers = list(e.listByName('frank'))
+        self.assertEquals(3, len(turnovers))
+        self.assertIn(100000, turnovers)
+        self.assertIn(140000, turnovers)
+        self.assertIn(200000, turnovers)
+        self.assertNotIn(220000, turnovers)
 
     def testListByYear(self):
         e = Employees(self.TEST_FILE)
@@ -74,50 +94,50 @@ class TestEmployees(unittest.TestCase):
         self.assertIn(220000, turnover)
         self.assertNotIn(2013, turnover)
 
-    def testListByName(self):
-        e = Employees(self.TEST_FILE)
-        self.assertIsNotNone(e)
-        years = list(e.listByName('frank'))
-        self.assertEquals(3, len(years))
-        self.assertIn(2011, years)
-        self.assertIn(2012, years)
-        self.assertIn(2013, years)
-        self.assertNotIn(2014, years)
-
     def testBadId(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
         self.assertIsNone(e.getName(1))
+
+    def testBadById(self):
+        e = Employees(self.TEST_FILE)
+        self.assertIsNotNone(e)
+        self.assertIsNone(e.getById(1))
 
     def testBadByName(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
         self.assertIsNone(e.getByName('badname'))
 
-    def testBadNameByYear(self):
+    def testBadByYear(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
-        self.assertIsNone(e.getByYear(name='badname', year=2012))
+        self.assertEqual(0, e.getByYear(1999))
 
-    def testBadYearByYear(self):
+    def testBadForNameByYear(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
-        self.assertEqual(0, e.getByYear(name='frank', year=1999))
+        self.assertIsNone(e.getForNameByYear('frank', 1999))
+        self.assertIsNone(e.getForNameByYear('jo', 1999))
+        self.assertIsNone(e.getForNameByYear('badname', 2011))
+        self.assertIsNone(e.getForNameByYear('badname', 2012))
+        self.assertIsNone(e.getForNameByYear('badname', 2013))
+        self.assertIsNone(e.getForNameByYear('badname', 2014))
 
-    def testBadAllByYear(self):
+    def testBadListById(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
-        self.assertEqual(0, e.getAllByYear(1999))
-
-    def testBadListByYear(self):
-        e = Employees(self.TEST_FILE)
-        self.assertIsNotNone(e)
-        self.assertIsNone(e.listByYear(1999))
+        self.assertIsNone(e.listById(1))
 
     def testBadListByName(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
         self.assertIsNone(e.listByName('badname'))
+
+    def testBadListByYear(self):
+        e = Employees(self.TEST_FILE)
+        self.assertIsNotNone(e)
+        self.assertIsNone(e.listByYear(1999))
 
     def tearDown(self):
         pass

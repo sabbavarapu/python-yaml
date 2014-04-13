@@ -61,8 +61,10 @@ clean:
 	$(RM) -f *.pyc *.pyo
 	$(RM) -f results.html
 	$(RM) -f tests/*.pyc tests/*.pyo
-	$(RM) -rf target
 	python-coverage erase
+
+cleandoc:
+	$(RM) -rf target
 	(cd doc; make clean)
 
 force_doc:
