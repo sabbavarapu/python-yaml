@@ -45,7 +45,7 @@ test:
 	# make directory for HTML test results
 	mkdir -p target/tests
 	# search tests directory
-	nosetests --config=nosetests.cfg --verbose --where $(PWD) tests/test*.py
+	nosetests --config=tests/nosetests.cfg --verbose --where $(PWD) tests/test*.py
 
 doc: force_doc
 	# Creating coverage HTML report
