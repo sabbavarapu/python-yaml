@@ -56,7 +56,9 @@ def main(argv=sys.argv):
     logger.debug("infile ......................: {s}".format(s=infile.name))
     logger.debug("prog ........................: {s}".format(s=prog))
     logger.debug("verbose .....................: {s}".format(s=verbose))
-    logger.debug("employees ...................: {s}".format(s=e.employees))
+    logger.debug("employees ...................:")
+    for n, t in e.employees.items():
+        logger.debug("\t{0}\t{1}".format(n,t))
 
     t = e.getName(3)
     logger.debug("name for id 3 ...............: {s}".format(s=t))
