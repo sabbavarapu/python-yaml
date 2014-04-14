@@ -67,11 +67,12 @@ clean:
 	$(RM) -f MANIFEST
 	$(RM) -f .noseids
 	$(RM) -f *.pyc *.pyo
-	$(RM) -rf dist/*
 	$(RM) -rf employees/*.pyc tests/*.pyo
 	$(RM) -rf tests/*.pyc tests/*.pyo
 
 cleanall: clean
+	# remove dist and target (docs) too
+	$(RM) -rf dist
 	$(RM) -rf target
 	(cd docs; make clean)
 
