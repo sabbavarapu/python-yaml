@@ -3,7 +3,10 @@
 Main
 ====
 
-Help on module main::
+.. automodule:: employees.main
+   :members:
+
+Help on module :download:`main <../employees/main.py>`::
 
    NAME
       main
@@ -19,7 +22,7 @@ Help on module main::
       main(argv)
          Test employees class.
 
-The :download:`main <../main.py>` module exists just to test the
+The :download:`main <../employees/main.py>` module exists just to test the
 :ref:`employees` class from command line.
 
 There is also help using the ``-h`` option::

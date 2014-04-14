@@ -3,13 +3,12 @@
 TestEmployees
 =============
 
+.. automodule:: tests.testemployees
+   :members:
+
 Tests are run using `nosetests
 <http://nose.readthedocs.org/en/latest/usage.html>`_. The test configuration is
 in the file ``nosetests.cfg``.
-
-
-.. automodule:: tests.testemployees
-   :members:
 
 
 Help on module testemployees::

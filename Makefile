@@ -1,7 +1,7 @@
 # Manage project
 #
 # You can run unittests using ...
-# - python testemployees.py
+# - python -m tests.testemployees -v
 # - python -m unittest discover -v
 
 COMMA:= ,
@@ -25,14 +25,14 @@ check:
 
 cover:
 	# Run main module
-	python-coverage run --include=employees/main.py,employees/employees.py -m employees/main
-	python-coverage run -a --include=main.py,employees.py -m employees/main -v test.yml
+	python-coverage run --source=employees --include=main.py,employees.py -m employees.main
+	python-coverage run -a --source=employees --include=main.py,employees.py -m employees.main -v test.yml
 	# Run unit tests (append results)
-	python-coverage run -a --include=employees/main.py,employees/employees.py -m tests.testemployees
+	python-coverage run -a --source=employees --include=main.py,employees.py -m tests.testemployees
 	# Annotate file to see what has been tested
 	python-coverage annotate employees/employees.py employees/main.py
 	# Generate unit test coverage report
-	python-coverage report --include=${SRCS_LIST}
+	python-coverage report employees.*
 
 run:
 	# Run main
@@ -54,7 +54,7 @@ doc: force_doc
 	$(RM) -rf $(COVER_DIR)
 	python-coverage html -d $(COVER_DIR)
 	# Create Sphinx documentation
-	(cd doc; make html)
+	(cd docs; make html)
 
 dist:
 	# Create package for distribution
@@ -71,9 +71,9 @@ clean:
 	$(RM) -rf employees/*.pyc tests/*.pyo
 	$(RM) -rf tests/*.pyc tests/*.pyo
 
-cleandoc:
+cleanall: clean
 	$(RM) -rf target
-	(cd doc; make clean)
+	(cd docs; make clean)
 
 force_doc:
 	true

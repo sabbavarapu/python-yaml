@@ -10,34 +10,35 @@ This is using the default Python :ref:`unittest <references>` suite, but using
 assert methods is `here
 <https://docs.python.org/2/library/unittest.html#classes-and-functions>`_
 
-To run the unit tests using::
+To run the unit tests using :download:`testemployees <../tests/testemployees.py>`::
 
-    python-coverage run -a --include=testemployees.py,employees.py testemployees.py
+	python-coverage run -a --source=employees --include=main.py,employees.py -m tests.testemployees
 
 Or::
 
-    python -m unittest discover -v
+    python -m unittest discover tests/ -v
 
 Or::
 
     nosetests --config=tests/nosetests.cfg --verbose --where $PWD tests/test*.py
+    
 
 The basic report of unit test results is::
 
-    # Run unit tests
-    # python -m unittest discover -v
-    nosetests testemployees.py -v
-    testAllByYear (testemployees.TestEmployees) ... ok
-    testBadAllByYear (testemployees.TestEmployees) ... ok
+    TestEmployees 0.1.0
+    testBadById (testemployees.TestEmployees) ... ok
     testBadByName (testemployees.TestEmployees) ... ok
+    testBadByYear (testemployees.TestEmployees) ... ok
+    testBadForNameByYear (testemployees.TestEmployees) ... ok
     testBadId (testemployees.TestEmployees) ... ok
+    testBadListById (testemployees.TestEmployees) ... ok
     testBadListByName (testemployees.TestEmployees) ... ok
     testBadListByYear (testemployees.TestEmployees) ... ok
-    testBadNameByYear (testemployees.TestEmployees) ... ok
-    testBadYearByYear (testemployees.TestEmployees) ... ok
     testByName (testemployees.TestEmployees) ... ok
     testByYear (testemployees.TestEmployees) ... ok
     testDump (testemployees.TestEmployees) ... ok
+    testForNameByYear (testemployees.TestEmployees) ... ok
+    testListById (testemployees.TestEmployees) ... ok
     testListByName (testemployees.TestEmployees) ... ok
     testListByYear (testemployees.TestEmployees) ... ok
     testLoadByFile (testemployees.TestEmployees) ... ok
@@ -45,7 +46,7 @@ The basic report of unit test results is::
     testName (testemployees.TestEmployees) ... ok
 
     ----------------------------------------------------------------------
-    Ran 16 tests in 0.052s
+    Ran 18 tests in 0.084s
 
     OK
 
