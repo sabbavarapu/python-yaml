@@ -20,7 +20,7 @@ Or::
 
 Or::
 
-	nosetests testemployees.py
+    nosetests --config=tests/nosetests.cfg --verbose --where $PWD tests/test*.py
 
 The basic report of unit test results is::
 
