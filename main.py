@@ -17,6 +17,8 @@ def main(argv=sys.argv):
 
     """ Test employees class. """
 
+    __version__ = '0.1.0'
+
     parser = argparse.ArgumentParser(
         prog=os.path.basename(argv[0]),
         usage='%(prog)s [options]',
@@ -36,7 +38,7 @@ def main(argv=sys.argv):
     parser.add_argument(
         '--version',
         action='version',
-        version='%(prog)s 0.1.0')
+        version=__version__)
 
     # process command line arguments
     args = parser.parse_args()
@@ -58,7 +60,7 @@ def main(argv=sys.argv):
     logger.debug("verbose .....................: {s}".format(s=verbose))
     logger.debug("employees ...................:")
     for n, t in e.employees.items():
-        logger.debug("\t{0}\t{1}".format(n,t))
+        logger.debug("\t{0}\t{1}".format(n, t))
 
     t = e.getName(3)
     logger.debug("name for id 3 ...............: {s}".format(s=t))

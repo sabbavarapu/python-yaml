@@ -11,6 +11,8 @@ class Employees:
 
     """ Read Employee data to return turnover information. """
 
+    __version__ = '0.1.0'
+
     def __init__(self, infile=None):
         self.employees = None
         if infile is not None:
