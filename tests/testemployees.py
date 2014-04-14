@@ -5,7 +5,7 @@
 Run unit tests for YAML file processing example, Employees.
 """
 
-from employees import Employees
+from employees.employees import Employees
 import os
 import unittest
 

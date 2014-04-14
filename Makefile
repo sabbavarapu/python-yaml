@@ -10,7 +10,7 @@ SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
 # srcs used by pychecker
-SRCS=main.py employees.py tests/testemployees.py
+SRCS=employees/main.py employees/employees.py tests/testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 .PROXY: all
@@ -25,18 +25,18 @@ check:
 
 cover:
 	# Run main module
-	python-coverage run --include=main.py,employees.py main.py
-	python-coverage run -a --include=main.py,employees.py main.py -v test.yml
+	python-coverage run --include=employees/main.py,employees/employees.py -m employees/main
+	python-coverage run -a --include=main.py,employees.py -m employees/main -v test.yml
 	# Run unit tests (append results)
-	python-coverage run -a --include=main.py,employees.py -m tests.testemployees
+	python-coverage run -a --include=employees/main.py,employees/employees.py -m tests.testemployees
 	# Annotate file to see what has been tested
-	python-coverage annotate employees.py main.py
+	python-coverage annotate employees/employees.py employees/main.py
 	# Generate unit test coverage report
 	python-coverage report --include=${SRCS_LIST}
 
 run:
 	# Run main
-	python main.py -v test.yml
+	python -m employees.main -v test.yml
 
 test:
 	# Run unit tests
@@ -46,6 +46,8 @@ test:
 	mkdir -p target/tests
 	# search tests directory
 	nosetests --config=tests/nosetests.cfg --verbose --where $(PWD) tests/test*.py
+	# compare with
+	# python -m tests.testemployees -v
 
 doc: force_doc
 	# Creating coverage HTML report
@@ -54,14 +56,20 @@ doc: force_doc
 	# Create Sphinx documentation
 	(cd doc; make html)
 
+dist:
+	# Create package for distribution
+	python setup.py sdist
+
 clean:
 	# Cleaning workspace
+	python-coverage erase
 	$(RM) -f *,cover
+	$(RM) -f MANIFEST
 	$(RM) -f .noseids
 	$(RM) -f *.pyc *.pyo
-	$(RM) -f results.html
-	$(RM) -f tests/*.pyc tests/*.pyo
-	python-coverage erase
+	$(RM) -rf dist/*
+	$(RM) -rf employees/*.pyc tests/*.pyo
+	$(RM) -rf tests/*.pyc tests/*.pyo
 
 cleandoc:
 	$(RM) -rf target

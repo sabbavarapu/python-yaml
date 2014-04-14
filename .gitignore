@@ -1,6 +1,8 @@
 *,cover
 .coverage
+dist/
 htmlcov/
+MANIFEST
 .noseids
 *.pyc
 *.pyo
