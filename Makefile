@@ -26,7 +26,7 @@ check:
 cover:
 	# Run main module
 	python-coverage run --source=employees --include=main.py,employees.py -m employees.main
-	python-coverage run -a --source=employees --include=main.py,employees.py -m employees.main -v tests/test.yml
+	python-coverage run -a --source=employees --include=main.py,employees.py -m employees.main -v data/test.yml
 	# Run unit tests (append results)
 	python-coverage run -a --source=employees --include=main.py,employees.py -m tests.testemployees
 	# Annotate file to see what has been tested
@@ -36,7 +36,7 @@ cover:
 
 run:
 	# Run main
-	python -m employees.main -v tests/test.yml
+	python -m employees.main -v data/test.yml
 
 test:
 	# Run unit tests
@@ -57,8 +57,9 @@ doc: force_make
 	(cd docs; make html)
 
 dist: force_make
-	# Create package for distribution
-	python setup.py sdist
+	# Create source package and build distribution
+	python setup.py sdist --dist-dir=target/dist 
+	python setup.py build --build-base=target/build
 
 clean:
 	# Cleaning workspace
@@ -72,7 +73,7 @@ clean:
 
 cleanall: clean
 	# remove dist and target (docs) too
-	$(RM) -rf dist
+	python setup.py clean
 	$(RM) -rf target
 	(cd docs; make clean)
 

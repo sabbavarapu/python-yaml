@@ -10,12 +10,8 @@ setup(
     author='Frank H. Jung',
     author_email='frankhjung@linux.com',
     packages=['employees', 'tests'],
-    scripts=[''],
     url='https://github.com/frankhjung/python-yaml',
     license='LICENSE.txt',
     description='Python example project.',
-    long_description=open('README.rst').read(),
-    install_requires=[
-        'yaml' >= '3.10-4',
-    ],
+    long_description=open('README.txt').read(),
 )
