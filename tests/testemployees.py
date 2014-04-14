@@ -14,7 +14,13 @@ class TestEmployees(unittest.TestCase):
 
     """ Tests for Employees. """
 
+    __version__ = Employees.__version__
+
     TEST_FILE = 'test.yml'
+
+    @classmethod
+    def setUpClass(cls):
+        print cls.__name__, cls.__version__
 
     def setUp(self):
         testFile = os.path.join(os.getcwd(), self.TEST_FILE)
