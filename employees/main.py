@@ -28,7 +28,7 @@ def main(argv=sys.argv):
         'infile',
         nargs='?',
         type=argparse.FileType('r'),
-        default='test.yml',
+        default='tests/test.yml',
         help='alternate YAML file to test')
     parser.add_argument(
         '-v',

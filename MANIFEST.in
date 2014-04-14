@@ -1,6 +1,7 @@
 include employees/*.py
+include Makefile
 include README.rst
 include tests/*.py
-include test.yml
+include tests/test.yml
 include *.txt
 recursive-include docs Makefile *.py *.rst *.html

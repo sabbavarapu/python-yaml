@@ -26,7 +26,7 @@ check:
 cover:
 	# Run main module
 	python-coverage run --source=employees --include=main.py,employees.py -m employees.main
-	python-coverage run -a --source=employees --include=main.py,employees.py -m employees.main -v test.yml
+	python-coverage run -a --source=employees --include=main.py,employees.py -m employees.main -v tests/test.yml
 	# Run unit tests (append results)
 	python-coverage run -a --source=employees --include=main.py,employees.py -m tests.testemployees
 	# Annotate file to see what has been tested
@@ -36,7 +36,7 @@ cover:
 
 run:
 	# Run main
-	python -m employees.main -v test.yml
+	python -m employees.main -v tests/test.yml
 
 test:
 	# Run unit tests
@@ -49,14 +49,14 @@ test:
 	# compare with
 	# python -m tests.testemployees -v
 
-doc: force_doc
+doc: force_make
 	# Creating coverage HTML report
 	$(RM) -rf $(COVER_DIR)
 	python-coverage html -d $(COVER_DIR)
 	# Create Sphinx documentation
 	(cd docs; make html)
 
-dist:
+dist: force_make
 	# Create package for distribution
 	python setup.py sdist
 
@@ -75,7 +75,7 @@ cleanall: clean
 	$(RM) -rf target
 	(cd docs; make clean)
 
-force_doc:
+force_make:
 	true
 
 #EOF
