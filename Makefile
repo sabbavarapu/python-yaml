@@ -58,6 +58,7 @@ doc: force_make
 
 dist: force_make
 	# Create source package and build distribution
+	python setup.py clean check
 	python setup.py sdist --dist-dir=target/dist 
 	python setup.py build --build-base=target/build
 
