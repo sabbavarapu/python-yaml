@@ -5,7 +5,7 @@
 SPHINXOPTS    = -a -q
 SPHINXBUILD   = sphinx-build
 PAPER         =
-BUILDDIR      = ../target/doc
+BUILDDIR      = ../target/docs
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
