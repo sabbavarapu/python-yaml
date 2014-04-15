@@ -22,6 +22,8 @@ check:
 	pychecker --only $(SRCS)
 	# Check with Pep8
 	pep8 --verbose $(SRCS)
+	# Check distutils
+	python setup.py check
 
 cover:
 	# Run main module
@@ -58,7 +60,7 @@ doc: force_make
 
 dist: force_make
 	# Create source package and build distribution
-	python setup.py clean check
+	python setup.py clean
 	python setup.py sdist --dist-dir=target/dist 
 	python setup.py build --build-base=target/build
 
