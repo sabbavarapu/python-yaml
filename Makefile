@@ -34,7 +34,7 @@ cover:
 	# Annotate file to see what has been tested
 	python-coverage annotate employees/employees.py employees/main.py
 	# Generate unit test coverage report
-	python-coverage report employees.*
+	python-coverage report
 
 run:
 	# Run main
@@ -56,7 +56,7 @@ doc: force_make
 	$(RM) -rf $(COVER_DIR)
 	python-coverage html -d $(COVER_DIR)
 	# Create Sphinx documentation
-	(cd docs; make html)
+	(cd doc; make html)
 
 dist: force_make
 	# Create source package and build distribution
@@ -75,10 +75,10 @@ clean:
 	$(RM) -rf tests/*.pyc tests/*.pyo
 
 cleanall: clean
-	# remove dist and target (docs) too
+	# remove dist and target (doc) too
 	python setup.py clean
 	$(RM) -rf target
-	(cd docs; make clean)
+	(cd doc; make clean)
 
 force_make:
 	true

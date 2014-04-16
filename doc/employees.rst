@@ -7,7 +7,7 @@ Employees
    :members:
 
 
-Help on module :download:`employees <../employees/employees.py>`::
+Help on module :download:`employees.py <../employees/employees.py>`::
 
     NAME
         employees

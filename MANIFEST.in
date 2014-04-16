@@ -3,4 +3,4 @@ include Makefile
 include tests/*.py
 include data/test.yml
 include *.txt
-recursive-include docs Makefile *.py *.rst
+recursive-include doc Makefile *.py *.rst

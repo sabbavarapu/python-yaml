@@ -6,7 +6,7 @@ Main
 .. automodule:: employees.main
    :members:
 
-Help on module :download:`main <../employees/main.py>`::
+Help on module :download:`main.py <../employees/main.py>`::
 
    NAME
       main
@@ -22,7 +22,7 @@ Help on module :download:`main <../employees/main.py>`::
       main(argv)
          Test employees class.
 
-The :download:`main <../employees/main.py>` module exists just to test the
+The :download:`main.py <../employees/main.py>` module exists just to test the
 :ref:`employees` class from command line.
 
 There is also help using the ``-h`` option::
