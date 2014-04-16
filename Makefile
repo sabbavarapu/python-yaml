@@ -1,7 +1,7 @@
 # Manage project
 #
 # You can run unittests using ...
-# - python -m tests.testemployees -v
+# - python -m test.testemployees -v
 # - python -m unittest discover -v
 
 COMMA:= ,
@@ -10,12 +10,12 @@ SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
 # srcs used by pychecker
-SRCS=employees/main.py employees/employees.py tests/testemployees.py
+SRCS=employees/main.py employees/employees.py test/testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 .PROXY: all
 
-all: check cover test
+all: check cover test doc
 
 check:
 	# Check with PyChecker
@@ -30,7 +30,7 @@ cover:
 	python-coverage run --source=employees --include=main.py,employees.py -m employees.main
 	python-coverage run -a --source=employees --include=main.py,employees.py -m employees.main -v data/test.yml
 	# Run unit tests (append results)
-	python-coverage run -a --source=employees --include=main.py,employees.py -m tests.testemployees
+	python-coverage run -a --source=employees --include=main.py,employees.py -m test.testemployees
 	# Annotate file to see what has been tested
 	python-coverage annotate employees/employees.py employees/main.py
 	# Generate unit test coverage report
@@ -45,11 +45,11 @@ test:
 	# python -m unittest discover -v
 	# list nodetests plugins using nosetests --plugins -vv
 	# make directory for HTML test results
-	mkdir -p target/tests
-	# search tests directory
-	nosetests --config=tests/nosetests.cfg --verbose --where $(PWD) tests/test*.py
+	mkdir -p target/test
+	# search test directory
+	nosetests --config=test/nosetests.cfg --verbose --where $(PWD) test/test*.py
 	# compare with
-	# python -m tests.testemployees -v
+	# python -m test.testemployees -v
 
 doc: force_make
 	# Creating coverage HTML report
@@ -71,8 +71,8 @@ clean:
 	$(RM) -f MANIFEST
 	$(RM) -f .noseids
 	$(RM) -f *.pyc *.pyo
-	$(RM) -rf employees/*.pyc tests/*.pyo
-	$(RM) -rf tests/*.pyc tests/*.pyo
+	$(RM) -rf employees/*.pyc test/*.pyo
+	$(RM) -rf test/*.pyc test/*.pyo
 
 cleanall: clean
 	# remove dist and target (doc) too

@@ -3,12 +3,12 @@
 TestEmployees
 =============
 
-.. automodule:: tests.testemployees
+.. automodule:: test.testemployees
    :members:
 
 Tests are run using `nosetests
 <http://nose.readthedocs.org/en/latest/usage.html>`_. The test configuration is
-in the file :download:`nosetests.cfg <../tests/nosetests.cfg>`.
+in the file :download:`nosetests.cfg <../test/nosetests.cfg>`.
 
 
 Help on module testemployees::
@@ -17,7 +17,7 @@ Help on module testemployees::
         testemployees - Run unit tests for YAML file processing example, Employees.
 
     FILE
-        /home/frank/dev/python/yaml/tests/testemployees.py
+        test/testemployees.py
 
     CLASSES
         unittest.case.TestCase(__builtin__.object)
