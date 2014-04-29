@@ -10,11 +10,6 @@ Tests are run using `nosetests
 <http://nose.readthedocs.org/en/latest/usage.html>`_. The test configuration is
 in the file :download:`nosetests.cfg <../test/nosetests.cfg>`.
 
-Tests are run using `nosetests
-<http://nose.readthedocs.org/en/latest/usage.html>`_. The test configuration is
-in the file ``nosetests.cfg``. :download:`nosetests.cfg
-<../tests/nosetests.cfg>`.
-
 
 Help on module testemployees::
 

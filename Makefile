@@ -15,7 +15,7 @@ SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 .PROXY: all
 
-all: check cover test doc
+all: check cover run test doc dist
 
 check:
 	# Check with PyChecker
@@ -40,7 +40,7 @@ run:
 	# Run main
 	python -m employees.main -v data/test.yml
 
-test:
+test: force_make
 	# Run unit tests
 	# python -m unittest discover -v
 	# list nodetests plugins using nosetests --plugins -vv
