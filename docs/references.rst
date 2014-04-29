@@ -10,7 +10,7 @@ Here are links to the tools and articles I read to prepare this project:
 * `GNU Make <http://www.gnu.org/software/make/>`_
 * `nosetest <http://nose.readthedocs.org/en/latest/>`_  
 * `PEP 8 Style Guide for Python Code <http://legacy.python.org/dev/peps/pep-0008/>`_
-* `PyDoc <https://docs.python.org/2/library/pydoc.html?highlight=pydoc#pydoc>`_
+* `PyDoc <https://docs.python.org/2/library/pydoc.html>`_
 * `Python documentation <https://docs.python.org/2.7/>`_
 * `PyYAML <http://pyyaml.org/wiki/PyYAMLDocumentation>`_
 * `Sphinx <http://sphinx-doc.org/contents.html>`_  

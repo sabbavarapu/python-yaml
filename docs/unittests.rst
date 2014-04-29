@@ -10,17 +10,17 @@ This is using the default Python :ref:`unittest <references>` suite, but using
 assert methods is `here
 <https://docs.python.org/2/library/unittest.html#classes-and-functions>`_
 
-To run the unit tests using :download:`testemployees <../tests/testemployees.py>`::
+To run the unit tests using :download:`testemployees <../test/testemployees.py>`::
 
-	python-coverage run -a --source=employees --include=main.py,employees.py -m tests.testemployees
-
-Or::
-
-    python -m unittest discover tests/ -v
+	python-coverage run -a --source=employees --include=main.py,employees.py -m test.testemployees
 
 Or::
 
-    nosetests --config=tests/nosetests.cfg --verbose --where $PWD tests/test*.py
+    python -m unittest discover test/ -v
+
+Or::
+
+    nosetests --config=test/nosetests.cfg --verbose --where $PWD test/test*.py
     
 
 The basic report of unit test results is::
