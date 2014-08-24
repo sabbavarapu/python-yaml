@@ -28,6 +28,7 @@ check:
 cover:
 	# Run main module
 	python-coverage run --source=employees --include=main.py,employees.py -m employees.main
+	# Run main module with verbose and test data
 	python-coverage run -a --source=employees --include=main.py,employees.py -m employees.main -v data/test.yml
 	# Run unit tests (append results)
 	python-coverage run -a --source=employees --include=main.py,employees.py -m test.testemployees
@@ -43,12 +44,12 @@ run:
 test: force_make
 	# Run unit tests
 	# python -m unittest discover -v
-	# list nodetests plugins using nosetests --plugins -vv
-	# make directory for HTML test results
+	# List nodetests plugins using nosetests --plugins -vv
+	# Make directory for HTML test results
 	mkdir -p target/test
-	# search test directory
+	# Search test directory
 	nosetests --config=test/nosetests.cfg --verbose --where $(PWD) test/test*.py
-	# compare with
+	# Compare with
 	# python -m test.testemployees -v
 
 doc: force_make
@@ -64,19 +65,18 @@ dist: force_make
 	python setup.py sdist --dist-dir=target/dist 
 	python setup.py build --build-base=target/build
 
-clean:
+clean: 
 	# Cleaning workspace
 	python-coverage erase
 	$(RM) -f *,cover
 	$(RM) -f MANIFEST
 	$(RM) -f .noseids
 	$(RM) -f *.pyc *.pyo
-	$(RM) -rf employees/*.pyc test/*.pyo
+	$(RM) -rf employees/*.pyc employees/*.pyo
 	$(RM) -rf test/*.pyc test/*.pyo
-
-cleanall: clean
-	# remove dist and target (doc) too
+	# Clean build distribution
 	python setup.py clean
+	# Clean generated documents
 	$(RM) -rf target
 	(cd docs; make clean)
 
