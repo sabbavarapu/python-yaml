@@ -17,6 +17,11 @@ SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 all: check cover run test doc dist
 
+help:
+	@echo "Default targets: all"
+	@echo "  all: check cover run test doc dist"
+	@echo "  clean: delete all generated files"
+
 check:
 	# Check with PyChecker
 	pychecker --only $(SRCS)
@@ -45,19 +50,21 @@ test: force_make
 	# Run unit tests
 	# python -m unittest discover -v
 	# List nodetests plugins using nosetests --plugins -vv
-	# Make directory for HTML test results
+	# Make directory for HTML test results to be included in documentation
 	mkdir -p target/test
 	# Search test directory
 	nosetests --config=test/nosetests.cfg --verbose --where $(PWD) test/test*.py
 	# Compare with
 	# python -m test.testemployees -v
+	# Test documentation (run coverage first)
+	# (cd docs; make doctest; make linkcheck)
 
 doc: force_make
-	# Creating coverage HTML report
+	# Creating coverage HTML report to be included in final documentation
 	$(RM) -rf $(COVER_DIR)
 	python-coverage html -d $(COVER_DIR)
 	# Create Sphinx documentation
-	(cd docs; make html)
+	(cd docs; make singlehtml)
 
 dist: force_make
 	# Create source package and build distribution
@@ -72,8 +79,8 @@ clean:
 	$(RM) -f MANIFEST
 	$(RM) -f .noseids
 	$(RM) -f *.pyc *.pyo
-	$(RM) -rf employees/*.pyc employees/*.pyo
-	$(RM) -rf test/*.pyc test/*.pyo
+	$(RM) -f employees/*.pyc employees/*.pyo
+	$(RM) -f test/*.pyc test/*.pyo
 	# Clean build distribution
 	python setup.py clean
 	# Clean generated documents
