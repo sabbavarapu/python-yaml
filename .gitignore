@@ -5,6 +5,7 @@ htmlcov/
 MANIFEST
 .noseids
 *.pyc
+__pycache__
 *.pyo
 .Python
 results.html
