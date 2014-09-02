@@ -72,20 +72,20 @@ dist: force_make
 	python setup.py sdist --dist-dir=target/dist 
 	python setup.py build --build-base=target/build
 
-clean: 
+clean: force_make 
 	# Cleaning workspace
 	python-coverage erase
-	$(RM) -f *,cover
-	$(RM) -f MANIFEST
-	$(RM) -f .noseids
-	$(RM) -f *.pyc *.pyo
-	$(RM) -f employees/*.pyc employees/*.pyo
-	$(RM) -f test/*.pyc test/*.pyo
 	# Clean build distribution
 	python setup.py clean
 	# Clean generated documents
-	$(RM) -rf target
 	(cd docs; make clean)
+	$(RM) -v *,cover
+	$(RM) -v MANIFEST
+	$(RM) -v .noseids
+	$(RM) -v *.pyc *.pyo
+	$(RM) -v employees/*.pyc employees/*.pyo employees/*.py,cover
+	$(RM) -v test/*.pyc test/*.pyo test/*.py,cover
+	$(RM) -rf target
 
 force_make:
 	true
