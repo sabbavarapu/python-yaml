@@ -10,7 +10,7 @@ SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
 # srcs used by pychecker
-SRCS=employees/main.py employees/employees.py test/testemployees.py
+SRCS=main.py employees/employees.py test/testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 .PROXY: all
@@ -18,9 +18,17 @@ SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 all: check cover run test doc dist
 
 help:
+	@echo
 	@echo "Default targets: all"
-	@echo "  all: check cover run test doc dist"
+	@echo "  all:   check cover run test doc dist"
+	@echo "  check: validate code and distribution config"
+	@echo "  cover: run test coverage report"
+	@echo "  run:   run against test data"
+	@echo "  test:  run unit test"
+	@echo "  doc:   create documentation including test converage and results"
+	@echo "  dist:  create a distrbution archive"
 	@echo "  clean: delete all generated files"
+	@echo
 
 check:
 	# Check with PyChecker
@@ -32,19 +40,19 @@ check:
 
 cover:
 	# Run main module
-	python-coverage run --source=employees --include=main.py,employees.py -m employees.main
+	python-coverage run --include=main.py,employees.employees.py -m main
 	# Run main module with verbose and test data
-	python-coverage run -a --source=employees --include=main.py,employees.py -m employees.main -v data/test.yml
+	python-coverage run --include=main.py,employees.employees.py -a -m main -v data/test.yml
 	# Run unit tests (append results)
-	python-coverage run -a --source=employees --include=main.py,employees.py -m test.testemployees
+	python-coverage run --include=main.py,employees.employees.py -a -m test.testemployees
 	# Annotate file to see what has been tested
-	python-coverage annotate employees/employees.py employees/main.py
+	python-coverage annotate employees/employees.py main.py
 	# Generate unit test coverage report
 	python-coverage report
 
 run:
 	# Run main
-	python -m employees.main -v data/test.yml
+	python -m main -v data/test.yml
 
 test: force_make
 	# Run unit tests
@@ -67,6 +75,8 @@ doc: force_make
 	(cd docs; make singlehtml)
 
 dist: force_make
+	# Copy readme for use in distribution
+	cp -f README.md README
 	# Create source package and build distribution
 	python setup.py clean
 	python setup.py sdist --dist-dir=target/dist 
@@ -79,13 +89,14 @@ clean: force_make
 	python setup.py clean
 	# Clean generated documents
 	(cd docs; make clean)
+	$(RM) -rf target
 	$(RM) -v *,cover
+	$(RM) -v employees/*.pyc employees/*.pyo employees/*.py,cover
 	$(RM) -v MANIFEST
 	$(RM) -v .noseids
 	$(RM) -v *.pyc *.pyo
-	$(RM) -v employees/*.pyc employees/*.pyo employees/*.py,cover
+	$(RM) -v README
 	$(RM) -v test/*.pyc test/*.pyo test/*.py,cover
-	$(RM) -rf target
 
 force_make:
 	true

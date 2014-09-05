@@ -12,7 +12,7 @@ assert methods is `here
 
 To run the unit tests using :download:`testemployees <../test/testemployees.py>`::
 
-	python-coverage run -a --source=employees --include=main.py,employees.py -m test.testemployees
+	python-coverage run --include=main.py,employees.employees.py -a -m test.testemployees
 
 Or::
 

@@ -6,7 +6,8 @@ Read Employee data to return turnover information.
 This is a example Python program to read and process YAML files.
 """
 
-from employees import Employees
+from employees.employees import Employees
+
 import argparse
 import logging
 import os.path
@@ -21,7 +22,7 @@ def main(argv=sys.argv):
 
     parser = argparse.ArgumentParser(
         prog=os.path.basename(argv[0]),
-        usage='%(prog)s [options]',
+        usage='%(prog)s [options] infile',
         description='a Python example program to show YAML processing',
         epilog='© 2014 Frank H Jung mailto:frankhjung@linux.com')
     parser.add_argument(

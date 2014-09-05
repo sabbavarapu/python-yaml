@@ -1,5 +1,4 @@
 
-===========================
 Processing YAML with Python 
 ===========================
 
@@ -12,4 +11,3 @@ This is an example Python project used to demonstrate:
 * process data from a YAML file
 * unittest modules
 
-.. EOF

@@ -3,10 +3,10 @@
 Main
 ====
 
-.. automodule:: employees.main
+.. automodule:: main
    :members:
 
-Help on module :download:`main.py <../employees/main.py>`::
+Help on module :download:`main.py <../main.py>`::
 
    NAME
       main
@@ -22,23 +22,22 @@ Help on module :download:`main.py <../employees/main.py>`::
       main(argv)
          Test employees class.
 
-The :download:`main.py <../employees/main.py>` module exists just to test the
+The :download:`main.py <../main.py>` module exists just to run the
 :ref:`employees` class from command line.
 
 There is also help using the ``-h`` option::
 
-    python main.py -h
-    usage: main.py [options]
+    usage: main.py [options] infile
 
     a Python example program to show YAML processing
 
     positional arguments:
-    infile         alternate YAML file to test
+      infile         alternate YAML file to test
 
     optional arguments:
-    -h, --help     show this help message and exit
-    -v, --verbose  verbose output
-    --version      show program's version number and exit
+      -h, --help     show this help message and exit
+      -v, --verbose  verbose output
+      --version      show program's version number and exit
 
     © 2014 Frank H Jung mailto:frankhjung@linux.com
 
