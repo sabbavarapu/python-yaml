@@ -56,15 +56,15 @@ def main(argv=sys.argv):
     # load employees from YAML
     e = Employees(infile)
 
-    logger.debug("infile ......................: {s}".format(s=infile.name))
-    logger.debug("prog ........................: {s}".format(s=prog))
-    logger.debug("verbose .....................: {s}".format(s=verbose))
+    logger.debug("infile ......................: {}".format(infile.name))
+    logger.debug("prog ........................: {}".format(prog))
+    logger.debug("verbose .....................: {}".format(verbose))
     logger.debug("employees ...................:")
     for n, t in e.employees.items():
         logger.debug("\t{0}\t{1}".format(n, t))
 
     t = e.getName(3)
-    logger.debug("name for id 3 ...............: {s}".format(s=t))
+    logger.debug("name for id 3 ...............: {}".format(t))
 
     t = e.getById(3)
     logger.debug("turnover for 3 ..............: ${:,}".format(t))
@@ -76,13 +76,13 @@ def main(argv=sys.argv):
     logger.debug("turnover for 2012 ...........: ${:,}".format(t))
 
     t = list(e.listById(3))
-    logger.debug("list turnover by id .........: {s}".format(s=t))
+    logger.debug("list turnover by id .........: {}".format(t))
 
     t = list(e.listByName('frank'))
-    logger.debug("list turnover by name .......: {s}".format(s=t))
+    logger.debug("list turnover by name .......: {}".format(t))
 
     t = list(e.listByYear(2013))
-    logger.debug("list turnover by year .......: {s}".format(s=t))
+    logger.debug("list turnover by year .......: {}".format(t))
 
     return 0
 
