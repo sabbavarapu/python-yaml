@@ -18,7 +18,7 @@ def main(argv=sys.argv):
 
     """ Test employees class. """
 
-    __version__ = '0.1.0'
+    __version__ = '0.2.0'
 
     parser = argparse.ArgumentParser(
         prog=os.path.basename(argv[0]),
