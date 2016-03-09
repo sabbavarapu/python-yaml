@@ -63,7 +63,7 @@ test:
 	# Make directory for HTML test results to be included in documentation
 	mkdir -p target/test
 	# Search test directory
-	nosetests --config=test/nosetests.cfg --verbose --where $(PWD) test/test*.py
+	nosetests --config=test/nosetests.cfg --where $(PWD) test/test*.py
 	# Compare with
 	# python -m test.testemployees -v
 	# Test documentation (run coverage first)
@@ -100,4 +100,4 @@ clean:
 	$(RM) -v README
 	$(RM) -v test/*.pyc test/*.pyo test/*.py,cover
 
-#EOF
+# EOF
