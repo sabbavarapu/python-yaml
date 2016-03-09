@@ -16,7 +16,9 @@ import sys
 
 def main(argv=sys.argv):
 
-    """ Test employees class. """
+    """ Test employees class.
+    :param argv:
+    """
 
     __version__ = '0.2.0'
 

@@ -19,19 +19,25 @@ class Employees:
             self.load(infile)
 
     def filterById(self, eid):
-        """ filter by id """
+        """ filter by id
+        :param eid:
+        """
         for n in self.employees.keys():
             if eid == self.employees.get(n).get('id'):
                 for t in self.employees.get(n).get('turnover'):
                     yield self.employees.get(n).get('turnover').get(t)
 
     def filterByName(self, name):
-        """ filter by name """
+        """ filter by name
+        :param name:
+        """
         for t in self.employees.get(name).get('turnover'):
             yield self.employees.get(name).get('turnover').get(t)
 
     def filterByYear(self, year):
-        """ filter by year """
+        """ filter by year
+        :param year:
+        """
         for n in self.employees.keys():
             if year in self.employees.get(n).get('turnover'):
                 yield self.employees.get(n).get('turnover').get(year)
@@ -45,10 +51,12 @@ class Employees:
 
     def dump(self):
         from yaml import dump
-        return dump(self.employees, encoding=('utf-8'))
+        return dump(self.employees, encoding='utf-8')
 
     def getName(self, eid):
-        """ Returns name of employee by id. """
+        """ Returns name of employee by id.
+        :param eid:
+        """
         name = None
         for n in self.employees.keys():
             if eid == self.employees.get(n).get('id'):
@@ -57,7 +65,9 @@ class Employees:
         return name
 
     def getById(self, eid):
-        """ Returns turnover for all years for an employee by id. """
+        """ Returns turnover for all years for an employee by id.
+        :param eid:
+        """
         turnovers = list(self.filterById(eid))
         if len(turnovers) > 0:
             total = sum(turnovers)
@@ -66,7 +76,9 @@ class Employees:
         return total
 
     def getByName(self, name):
-        """ Returns turnover for all years for an employee by name. """
+        """ Returns turnover for all years for an employee by name.
+        :param name:
+        """
         if name in self.employees.keys():
             total = sum(self.filterByName(name))
         else:
@@ -74,12 +86,17 @@ class Employees:
         return total
 
     def getByYear(self, year):
-        """ Returns turnover for all employees by year. """
+        """ Returns turnover for all employees by year.
+        :param year:
+        """
         total = sum(self.filterByYear(year))
         return total
 
     def getForNameByYear(self, name, year):
-        """ Returns turnover for an employee for a specific year. """
+        """ Returns turnover for an employee for a specific year.
+        :param year:
+        :param name:
+        """
         if name in self.employees.keys():
             turnovers = list(self.employees.get(name).get('turnover').get(t)
                              for t in self.employees.get(name).get('turnover')
@@ -93,7 +110,9 @@ class Employees:
         return total
 
     def listById(self, eid):
-        """ List turnover by id. """
+        """ List turnover by id.
+        :param eid:
+        """
         turnovers = list(self.filterById(eid))
         if len(turnovers) > 0:
             pass
@@ -102,7 +121,9 @@ class Employees:
         return turnovers
 
     def listByName(self, name):
-        """ List turnover by name. """
+        """ List turnover by name.
+        :param name:
+        """
         if name in self.employees.keys():
             turnovers = list(self.filterByName(name))
         else:
@@ -110,7 +131,9 @@ class Employees:
         return turnovers
 
     def listByYear(self, year):
-        """ List turnover by year. """
+        """ List turnover by year.
+        :param year:
+        """
         turnovers = list(self.filterByYear(year))
         if len(turnovers) > 0:
             pass

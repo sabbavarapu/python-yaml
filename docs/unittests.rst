@@ -16,39 +16,39 @@ To run the unit tests using :download:`testemployees <../test/testemployees.py>`
 
 Or::
 
-    python -m unittest discover test/ -v
+	python -m unittest discover test/ -v
 
 Or::
 
-    nosetests --config=test/nosetests.cfg --verbose --where $PWD test/test*.py
-    
+	nosetests --config=test/nosetests.cfg --verbose --where $PWD test/test*.py
+
 
 The basic report of unit test results is::
 
-    TestEmployees 0.1.0
-    testBadById (testemployees.TestEmployees) ... ok
-    testBadByName (testemployees.TestEmployees) ... ok
-    testBadByYear (testemployees.TestEmployees) ... ok
-    testBadForNameByYear (testemployees.TestEmployees) ... ok
-    testBadId (testemployees.TestEmployees) ... ok
-    testBadListById (testemployees.TestEmployees) ... ok
-    testBadListByName (testemployees.TestEmployees) ... ok
-    testBadListByYear (testemployees.TestEmployees) ... ok
-    testByName (testemployees.TestEmployees) ... ok
-    testByYear (testemployees.TestEmployees) ... ok
-    testDump (testemployees.TestEmployees) ... ok
-    testForNameByYear (testemployees.TestEmployees) ... ok
-    testListById (testemployees.TestEmployees) ... ok
-    testListByName (testemployees.TestEmployees) ... ok
-    testListByYear (testemployees.TestEmployees) ... ok
-    testLoadByFile (testemployees.TestEmployees) ... ok
-    testLoadByName (testemployees.TestEmployees) ... ok
-    testName (testemployees.TestEmployees) ... ok
+	TestEmployees 0.1.0
+	testBadById (testemployees.TestEmployees) ... ok
+	testBadByName (testemployees.TestEmployees) ... ok
+	testBadByYear (testemployees.TestEmployees) ... ok
+	testBadForNameByYear (testemployees.TestEmployees) ... ok
+	testBadId (testemployees.TestEmployees) ... ok
+	testBadListById (testemployees.TestEmployees) ... ok
+	testBadListByName (testemployees.TestEmployees) ... ok
+	testBadListByYear (testemployees.TestEmployees) ... ok
+	testByName (testemployees.TestEmployees) ... ok
+	testByYear (testemployees.TestEmployees) ... ok
+	testDump (testemployees.TestEmployees) ... ok
+	testForNameByYear (testemployees.TestEmployees) ... ok
+	testListById (testemployees.TestEmployees) ... ok
+	testListByName (testemployees.TestEmployees) ... ok
+	testListByYear (testemployees.TestEmployees) ... ok
+	testLoadByFile (testemployees.TestEmployees) ... ok
+	testLoadByName (testemployees.TestEmployees) ... ok
+	testName (testemployees.TestEmployees) ... ok
 
-    ----------------------------------------------------------------------
-    Ran 18 tests in 0.084s
+	----------------------------------------------------------------------
+	Ran 18 tests in 0.084s
 
-    OK
+	OK
 
 See also :ref:`coverage`.
 
