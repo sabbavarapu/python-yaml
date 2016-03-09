@@ -4,6 +4,7 @@
 .coverage
 dist/
 htmlcov/
+.idea/
 MANIFEST
 .noseids
 *.pyc
