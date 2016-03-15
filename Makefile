@@ -1,7 +1,7 @@
 # Manage project
 #
 # You can run unittests using ...
-# - python -m test.testemployees -v
+# - python -m tests.testemployees -v
 # - python -m unittest discover -v
 
 .DEFAULT_GOAL := help
@@ -14,7 +14,7 @@ SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
 # srcs used by pychecker
-SRCS=main.py employees/employees.py test/testemployees.py
+SRCS=main.py employees/employees.py tests/testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 all: check cover run test doc dist
@@ -44,9 +44,9 @@ cover:
 	# Run main module
 	python-coverage run --include=main.py,employees.employees.py -m main
 	# Run main module with verbose and test data
-	python-coverage run --include=main.py,employees.employees.py -a -m main -v data/test.yml
+	python-coverage run --include=main.py,employees.employees.py -a -m main -v tests/test.yaml
 	# Run unit tests (append results)
-	python-coverage run --include=main.py,employees.employees.py -a -m test.testemployees
+	python-coverage run --include=main.py,employees.employees.py -a -m tests.testemployees
 	# Annotate file to see what has been tested
 	python-coverage annotate employees/employees.py main.py
 	# Generate unit test coverage report
@@ -54,18 +54,18 @@ cover:
 
 run:
 	# Run main
-	python -m main -v data/test.yml
+	python -m main -v tests/test.yaml
 
 test:
 	# Run unit tests
 	# python -m unittest discover -v
 	# List nodetests plugins using nosetests --plugins -vv
 	# Make directory for HTML test results to be included in documentation
-	mkdir -p target/test
+	mkdir -p target/tests
 	# Search test directory
-	nosetests --config=test/nosetests.cfg --where $(PWD) test/test*.py
+	nosetests --config=tests/nosetests.cfg --where $(PWD) tests/test*.py
 	# Compare with
-	# python -m test.testemployees -v
+	# python -m tests.testemployees -v
 	# Test documentation (run coverage first)
 	# (cd docs; make doctest; make linkcheck)
 
@@ -78,7 +78,7 @@ doc:
 
 dist:
 	# Copy readme for use in distribution
-	cp -f README.md README
+	pandoc -t plain README.md > README
 	# Create source package and build distribution
 	python setup.py clean
 	python setup.py sdist --dist-dir=target/dist 

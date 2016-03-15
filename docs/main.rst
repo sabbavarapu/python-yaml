@@ -41,5 +41,10 @@ There is also help using the ``-h`` option::
 
     © 2014 Frank H Jung mailto:frankhjung@linux.com
 
+Coverage
+--------
+
+Here is the `coverage report for main.py <_static/main.html>`_.
+    
 
 .. EOF

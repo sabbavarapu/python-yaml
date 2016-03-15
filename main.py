@@ -20,7 +20,7 @@ def main(argv=sys.argv):
     :param argv:
     """
 
-    __version__ = '0.2.0'
+    __version__ = Employees.__version__
 
     parser = argparse.ArgumentParser(
         prog=os.path.basename(argv[0]),
@@ -31,7 +31,7 @@ def main(argv=sys.argv):
         'infile',
         nargs='?',
         type=argparse.FileType('r'),
-        default='data/test.yml',
+        default='tests/test.yaml',
         help='alternate YAML file to test')
     parser.add_argument(
         '-v',
