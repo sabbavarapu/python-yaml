@@ -92,12 +92,10 @@ clean:
 	# Clean generated documents
 	(cd docs; make clean)
 	$(RM) -rf target
-	$(RM) -v *,cover
-	$(RM) -v employees/*.pyc employees/*.pyo employees/*.py,cover
 	$(RM) -v MANIFEST
 	$(RM) -v .noseids
-	$(RM) -v *.pyc *.pyo
+	$(RM) -v *.pyc *.pyo *.py,cover
+	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
 	$(RM) -v README
-	$(RM) -v test/*.pyc test/*.pyo test/*.py,cover
 
 # EOF
