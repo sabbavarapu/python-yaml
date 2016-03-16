@@ -3,11 +3,13 @@
 Employees
 =========
 
-.. automodule:: employees.employees
+.. :py:mod:employees.employees
    :members:
 
 
-Help on module :download:`employees.py <../employees/employees.py>`::
+Help on module :download:`employees.py <../employees/employees.py>`:
+
+.. code::
 
     NAME
         employees

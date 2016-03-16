@@ -58,13 +58,11 @@ run:
 
 test:
 	# Run unit tests
-	# python -m unittest discover -v
+	python -m unittest discover -v
 	# List nodetests plugins using nosetests --plugins -vv
-	# Make directory for HTML test results to be included in documentation
-	mkdir -p target/tests
-	# Search test directory
-	nosetests --config=tests/nosetests.cfg --where $(PWD) tests/test*.py
-	# Compare with
+	# Run using nosetests
+	# nosetests --config=tests/nosetests.cfg --where $(PWD) tests/test*.py
+	# Run test class
 	# python -m tests.testemployees -v
 	# Test documentation (run coverage first)
 	# (cd docs; make doctest; make linkcheck)

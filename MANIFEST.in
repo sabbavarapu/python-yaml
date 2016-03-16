@@ -1,6 +1,6 @@
 include employees/*.py
 include Makefile
 include tests/*.py
-include tests/test.yml
+include tests/test.yaml
 include *.txt
 recursive-include docs *.rst

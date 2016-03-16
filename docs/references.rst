@@ -21,7 +21,7 @@ PyDoc can be generated for each module using::
 
     pydoc [module]
 
-I've included the PyDoc output for all :ref:`classes` and the :ref:`main`
+I've included the PyDoc output for all :doc:classes and the :py:mod:main
 module. You can generate HTML output using PyDoc. To run the GUI interface
 call::
 

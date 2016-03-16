@@ -1,12 +1,21 @@
 .. _main:
 
+This is an example `Python <references>`_ project used to demonstrate:
+
+* documentation using `Sphinx <references>`_
+* example processing a YAML file using `PyYAML <references>`_
+* module help using `PyDoc <references>`_
+* unit tests using `unittest framework <references>`_
+* code coverage using `python-coverage <references>`_
+* code style checks using `PEP8 <references>`_
+* the project is managed using `GNU Make <references>`_
+
 Main
 ====
 
-.. automodule:: main
-   :members:
+Module help:
 
-Help on module :download:`main.py <../main.py>`::
+.. code::
 
    NAME
       main
@@ -22,7 +31,8 @@ Help on module :download:`main.py <../main.py>`::
       main(argv)
          Test employees class.
 
-The :download:`main.py <../main.py>` module exists just to run the
+
+The module :download:`main.py <../main.py>` exists just to run the
 :ref:`employees` class from command line.
 
 There is also help using the ``-h`` option::
@@ -40,6 +50,7 @@ There is also help using the ``-h`` option::
       --version      show program's version number and exit
 
     © 2014 Frank H Jung mailto:frankhjung@linux.com
+
 
 Coverage
 --------
