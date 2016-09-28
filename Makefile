@@ -33,62 +33,64 @@ help:
 	@echo
 
 check:
-	# Check with PyChecker
+	# check with PyChecker
 	pychecker --only $(SRCS)
-	# Check with Pep8
+	# check with Pep8
 	pep8 --verbose $(SRCS)
-	# Check distutils
+	# check distutils
 	python setup.py check
 
 cover:
-	# Run main module
+	# run main module
 	python-coverage run --include=main.py,employees.employees.py -m main
-	# Run main module with verbose and test data
+	# run main module with verbose and test data
 	python-coverage run --include=main.py,employees.employees.py -a -m main -v tests/test.yaml
-	# Run unit tests (append results)
+	# run unit tests (append results)
 	python-coverage run --include=main.py,employees.employees.py -a -m tests.testemployees
-	# Annotate file to see what has been tested
+	# annotate file to see what has been tested
 	python-coverage annotate employees/employees.py main.py
-	# Generate unit test coverage report
+	# generate unit test coverage report
 	python-coverage report
 
 run:
-	# Run main
+	# run main
 	python -m main -v tests/test.yaml
 
 test:
-	# Run unit tests
-	python -m unittest discover -v
-	# List nodetests plugins using nosetests --plugins -vv
-	# Run using nosetests
-	# nosetests --config=tests/nosetests.cfg --where $(PWD) tests/test*.py
-	# Run test class
-	# python -m tests.testemployees -v
-	# Test documentation (run coverage first)
-	# (cd docs; make doctest; make linkcheck)
+	# run unit tests
+	# python -m unittest discover -v
+	# list nodetests plugins using nosetests --plugins -vv
+	# run using nosetests for text and html output
+	nosetests --config=tests/nosetests.cfg --with-html-output --html-out-file results.html --where $(PWD) --cover-package employees tests/test*.py
+	# run test class
+	#   python -m tests.testemployees -v
+	# test documentation (run coverage first)
+	#   (cd docs; make doctest; make linkcheck)
 
 doc:
-	# Creating coverage HTML report to be included in final documentation
+	# creating coverage html report to be included in final documentation
 	$(RM) -rf $(COVER_DIR)
 	python-coverage html -d $(COVER_DIR)
-	# Create Sphinx documentation
+	# create sphinx documentation
 	(cd docs; make singlehtml)
 
 dist:
-	# Copy readme for use in distribution
+	# copy readme for use in distribution
 	pandoc -t plain README.md > README
-	# Create source package and build distribution
+	# create source package and build distribution
 	python setup.py clean
-	python setup.py sdist --dist-dir=target/dist 
+	python setup.py sdist --dist-dir=target/dist
 	python setup.py build --build-base=target/build
 
 clean:
-	# Cleaning workspace
+	# cleaning workspace
 	python-coverage erase
-	# Clean build distribution
+	# clean build distribution
 	python setup.py clean
-	# Clean generated documents
+	# clean generated documents
 	(cd docs; make clean)
+	$(RM) -rf cover
+	$(RM) -rf results.html
 	$(RM) -rf target
 	$(RM) -v MANIFEST
 	$(RM) -v .noseids

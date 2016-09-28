@@ -55,7 +55,7 @@ There is also help using the ``-h`` option::
 Coverage
 --------
 
-Here is the `coverage report for main.py <_static/main.html>`_.
+Here is the `coverage report for main.py <_static/index.html>`_.
     
 
 .. EOF
