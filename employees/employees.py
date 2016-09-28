@@ -7,13 +7,14 @@ This is a example Python program to read and process YAML files.
 """
 
 
-class Employees:
+class Employees(object):
 
     """ Read Employee data to return turnover information. """
 
     __version__ = '0.3.0'
 
     def __init__(self, infile=None):
+        self.__class__ = Employees
         self.employees = None
         if infile is not None:
             self.load(infile)
