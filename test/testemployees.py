@@ -16,7 +16,7 @@ class TestEmployees(unittest.TestCase):
 
     __version__ = Employees.__version__
 
-    TEST_FILE = 'tests/test.yaml'
+    TEST_FILE = 'test/test.yaml'
 
     @classmethod
     def setUpClass(cls):

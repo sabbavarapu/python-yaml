@@ -3,14 +3,14 @@
 TestEmployees
 =============
 
-.. :py:mod:tests.testemployees
+.. :py:mod:test.testemployees
    :members:
 
 Tests are run using `nosetests
 <http://nose.readthedocs.org/en/latest/usage.html>`_. The test configuration is
-in :download:`nosetests.cfg <../tests/nosetests.cfg>`.
+in :download:`nosetests.cfg <../test/nosetests.cfg>`.
 
-Help on module :download:`testemployees.py <../tests/testemployees.py>`:
+Help on module :download:`testemployees.py <../test/testemployees.py>`:
 
 .. code::
 
@@ -18,7 +18,7 @@ Help on module :download:`testemployees.py <../tests/testemployees.py>`:
       testemployees - Run unit tests for YAML file processing example, Employees.
 
    FILE
-      tests/testemployees.py
+      test/testemployees.py
 
    CLASSES
       unittest.case.TestCase(__builtin__.object)
@@ -82,7 +82,7 @@ Help on module :download:`testemployees.py <../tests/testemployees.py>`:
       |  ----------------------------------------------------------------------
       |  Data and other attributes defined here:
       |  
-      |  TEST_FILE = 'tests/test.yaml'
+      |  TEST_FILE = 'test/test.yaml'
       |  
       |  __version__ = '0.3.0'
       |  

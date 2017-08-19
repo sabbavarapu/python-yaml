@@ -1,3 +1,4 @@
-v0.3.0, 15-Mar-2016 -- refactor location of tests data and add coverage report for main.py
+v0.4.0, 20-Aug-2017 -- fix sphinx documentation
+v0.3.0, 15-Mar-2016 -- re-factor location of tests data and add coverage report
 v0.2.0, 09-Mar-2016 -- packages updated
 v0.1.0, 14-Apr-2014 -- initial release

@@ -1,7 +1,7 @@
 # Manage project
 #
 # You can run unittests using ...
-# - python -m tests.testemployees -v
+# - python -m test.testemployees -v
 # - python -m unittest discover -v
 
 .DEFAULT_GOAL := help
@@ -14,7 +14,7 @@ SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
 # srcs used by pychecker
-SRCS=main.py employees/employees.py tests/testemployees.py
+SRCS=main.py employees/employees.py test/testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
 all: check cover run test doc dist
@@ -44,9 +44,9 @@ cover:
 	# run main module
 	python-coverage run --include=main.py,employees.employees.py -m main
 	# run main module with verbose and test data
-	python-coverage run --include=main.py,employees.employees.py -a -m main -v tests/test.yaml
+	python-coverage run --include=main.py,employees.employees.py -a -m main -v test/test.yaml
 	# run unit tests (append results)
-	python-coverage run --include=main.py,employees.employees.py -a -m tests.testemployees
+	python-coverage run --include=main.py,employees.employees.py -a -m test.testemployees
 	# annotate file to see what has been tested
 	python-coverage annotate employees/employees.py main.py
 	# generate unit test coverage report
@@ -54,16 +54,16 @@ cover:
 
 run:
 	# run main
-	python -m main -v tests/test.yaml
+	python -m main -v test/test.yaml
 
 test:
 	# run unit tests
 	# python -m unittest discover -v
 	# list nodetests plugins using nosetests --plugins -vv
 	# run using nosetests for text and html output
-	nosetests --config=tests/nosetests.cfg --with-html-output --html-out-file results.html --where $(PWD) --cover-package employees tests/test*.py
+	nosetests --config=test/nosetests.cfg --with-html-output --html-out-file results.html --where $(PWD) --cover-package employees test/test*.py
 	# run test class
-	#   python -m tests.testemployees -v
+	#   python -m test.testemployees -v
 	# test documentation (run coverage first)
 	#   (cd docs; make doctest; make linkcheck)
 
