@@ -13,7 +13,9 @@ This is an example Python project used to demonstrate:
 
 ## Required Packages
 
-The following python packages are required to run the make [file](./Makefile), which can be installed using pip (example: `pip install ${package}`):
+The following python packages are required to run the make [file](./Makefile),
+which can be installed using pip (example: `pip install ${package}`):
+
 * `coverage`
 * `nose`
 * `pep8`
@@ -22,6 +24,6 @@ The following python packages are required to run the make [file](./Makefile), w
 * `pyyaml`
 * `sphinx`
 
-In addition pandoc is required for package and distribution, please see this [link](https://pandoc.org/installing.html) for installation instructions.
-
+In addition pandoc is required for package and distribution, please see this
+[link](https://pandoc.org/installing.html) for installation instructions.
 

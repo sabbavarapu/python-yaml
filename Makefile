@@ -98,4 +98,6 @@ clean:
 	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
 	$(RM) -v README
 
-# EOF
+version:
+	@grep -F '__version__' employees/employees.py
+

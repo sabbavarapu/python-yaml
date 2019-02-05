@@ -1,3 +1,4 @@
+v0.5.0, 17-Dec-2018 -- update tools
 v0.4.0, 20-Aug-2017 -- fix sphinx documentation
 v0.3.0, 15-Mar-2016 -- re-factor location of tests data and add coverage report
 v0.2.0, 09-Mar-2016 -- packages updated
