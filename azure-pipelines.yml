@@ -15,18 +15,24 @@ steps:
       sudo apt-get install make python python-dev python-coverage python-pip
       [[ ! -e /usr/bin/coverage ]] && sudo ln -sf /usr/bin/python-coverage /usr/bin/coverage
       sudo apt-get install python-nose python-nosehtmloutput python-pyflakes python-sphinx python-sphinx-rtd-theme pandoc
-    displayName: 'install package dependencies'
-
-  - script: |
-      python -m pip install --upgrade pip
+      sudo python -m pip install --upgrade pip
       sudo python -m pip install pycodestyle
-    displayName: 'install project dependencies'
+    displayName: 'Install Project Dependencies'
 
   - script: |
       make all
-    displayName: 'make project'
+    displayName: 'Make Project'
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/results/'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: '$(System.DefaultWorkingDirectory)/results/'
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
       artifactName: results
+
