@@ -1,14 +1,14 @@
 .. _main:
 
-This is an example `Python <references>`_ project used to demonstrate:
+This is an example `Python <references.html>`_ project used to demonstrate:
 
-* documentation using `Sphinx <references>`_
-* example processing a YAML file using `PyYAML <references>`_
-* module help using `PyDoc <references>`_
-* unit tests using `unittest framework <references>`_
-* code coverage using `python-coverage <references>`_
-* code style checks using `PEP8 <references>`_
-* the project is managed using `GNU Make <references>`_
+* documentation using `Sphinx <references.html>`_
+* example processing a YAML file using `PyYAML <references.html>`_
+* module help using `PyDoc <references.html>`_
+* unit tests using `unittest framework <references.html>`_
+* code coverage using `python-coverage <references.html>`_
+* code style checks using `PEP8 <references.html>`_
+* the project is managed using `GNU Make <references.html>`_
 
 Main
 ====
@@ -55,7 +55,7 @@ There is also help using the ``-h`` option::
 Coverage
 --------
 
-Here is the `coverage report for main.py <_static/index.html>`_.
+Here is the `coverage report <_static/index.html>`_.
     
 
 .. EOF

@@ -18,7 +18,6 @@ which can be installed using pip (example: `pip install ${package}`):
 
 * `coverage`
 * `nose`
-* `pep8`
 * `pycodestyle`
 * `pyflakes`
 * `pyyaml`

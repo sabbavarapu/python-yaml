@@ -20,7 +20,7 @@ class TestEmployees(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print cls.__name__, cls.__version__
+        print(cls.__name__, cls.__version__)
 
     def setUp(self):
         testFile = os.path.join(os.getcwd(), self.TEST_FILE)
@@ -31,7 +31,7 @@ class TestEmployees(unittest.TestCase):
         self.assertIsNotNone(e)
 
     def testLoadByFile(self):
-        e = Employees(file(self.TEST_FILE))
+        e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
 
     def testDump(self):
@@ -50,32 +50,32 @@ class TestEmployees(unittest.TestCase):
     def testByName(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
-        self.assertEquals(440000, e.getByName('frank'))
-        self.assertEquals(560000, e.getByName('jo'))
+        self.assertEqual(440000, e.getByName('frank'))
+        self.assertEqual(560000, e.getByName('jo'))
 
     def testForNameByYear(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
-        self.assertEquals(100000, e.getForNameByYear(name='frank', year=2011))
-        self.assertEquals(140000, e.getForNameByYear(name='frank', year=2012))
-        self.assertEquals(200000, e.getForNameByYear(name='frank', year=2013))
-        self.assertEquals(130000, e.getForNameByYear(name='jo', year=2012))
-        self.assertEquals(220000, e.getForNameByYear(name='jo', year=2013))
-        self.assertEquals(210000, e.getForNameByYear(name='jo', year=2014))
+        self.assertEqual(100000, e.getForNameByYear(name='frank', year=2011))
+        self.assertEqual(140000, e.getForNameByYear(name='frank', year=2012))
+        self.assertEqual(200000, e.getForNameByYear(name='frank', year=2013))
+        self.assertEqual(130000, e.getForNameByYear(name='jo', year=2012))
+        self.assertEqual(220000, e.getForNameByYear(name='jo', year=2013))
+        self.assertEqual(210000, e.getForNameByYear(name='jo', year=2014))
 
     def testByYear(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
-        self.assertEquals(100000, e.getByYear(2011))
-        self.assertEquals(270000, e.getByYear(2012))
-        self.assertEquals(420000, e.getByYear(2013))
-        self.assertEquals(210000, e.getByYear(2014))
+        self.assertEqual(100000, e.getByYear(2011))
+        self.assertEqual(270000, e.getByYear(2012))
+        self.assertEqual(420000, e.getByYear(2013))
+        self.assertEqual(210000, e.getByYear(2014))
 
     def testListById(self):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
         turnovers = list(e.listById(3))
-        self.assertEquals(3, len(turnovers))
+        self.assertEqual(3, len(turnovers))
         self.assertIn(100000, turnovers)
         self.assertIn(140000, turnovers)
         self.assertIn(200000, turnovers)
@@ -85,7 +85,7 @@ class TestEmployees(unittest.TestCase):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
         turnovers = list(e.listByName('frank'))
-        self.assertEquals(3, len(turnovers))
+        self.assertEqual(3, len(turnovers))
         self.assertIn(100000, turnovers)
         self.assertIn(140000, turnovers)
         self.assertIn(200000, turnovers)
@@ -95,7 +95,7 @@ class TestEmployees(unittest.TestCase):
         e = Employees(self.TEST_FILE)
         self.assertIsNotNone(e)
         turnover = list(e.listByYear(2013))
-        self.assertEquals(2, len(turnover))
+        self.assertEqual(2, len(turnover))
         self.assertIn(200000, turnover)
         self.assertIn(220000, turnover)
         self.assertNotIn(2013, turnover)

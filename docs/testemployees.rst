@@ -84,7 +84,7 @@ Help on module :download:`testemployees.py <../test/testemployees.py>`:
       |  
       |  TEST_FILE = 'test/test.yaml'
       |  
-      |  __version__ = '0.3.0'
+      |  __version__ = '0.5.0'
       |  
       |  ----------------------------------------------------------------------
       |  Methods inherited from unittest.case.TestCase:

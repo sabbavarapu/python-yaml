@@ -45,14 +45,17 @@ class Employees(object):
 
     def load(self, infile):
         from yaml import load
-        if isinstance(infile, file):
+        from io import IOBase
+        if isinstance(infile, IOBase):
             self.employees = load(infile)
         else:
-            self.employees = load(file(infile))
+            fh = open(infile, 'r')
+            self.employees = load(fh)
+            fh.close()
 
     def dump(self):
         from yaml import dump
-        return dump(self.employees, encoding='utf-8')
+        return dump(self.employees)
 
     def getName(self, eid):
         """ Returns name of employee by id.

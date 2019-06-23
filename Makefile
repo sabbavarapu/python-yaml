@@ -15,7 +15,7 @@ SPACE	:= $(EMPTY) $(EMPTY)
 COVER	:= target/cover
 SRCS	:=main.py employees/employees.py test/testemployees.py
 
-all: check cover run test doc dist
+all: check test cover doc run dist version
 
 help:
 	@echo
@@ -36,41 +36,23 @@ check:
 	# check with pycodestyle
 	pycodestyle --verbose $(SRCS)
 	# check distutils
-	python setup.py check
+	python3 setup.py check
 
 cover:
-	# run main module
-	coverage run --include=main.py,employees.employees.py -m main
-	# run main module with verbose and test data
-	coverage run --include=main.py,employees.employees.py -a -m main -v test/test.yaml
-	# run unit tests (append results)
-	coverage run --include=main.py,employees.employees.py -a -m test.testemployees
-	# annotate file to see what has been tested
-	coverage annotate employees/employees.py main.py
-	# generate unit test coverage report
-	coverage report
+	nosetests --with-coverage --cover-erase --cover-html-dir=results --cover-html --where $(PWD) --config=test/nosetests.cfg --cover-package employees test/test*.py
 
 run:
-	# run main
-	python -m main -v test/test.yaml
+	python3 -m main -v test/test.yaml
 
 test:
-	# run unit tests
-	# python -m unittest discover -v
-	# list nodetests plugins using nosetests --plugins -vv
-	# run using nosetests for text and html output
-	nosetests --config=test/nosetests.cfg --cover-html --cover-html-dir=results --where $(PWD) --cover-package employees test/test*.py
-	# run test class
-	#   python -m test.testemployees -v
-	# test documentation (run coverage first)
-	#   (cd docs; make doctest; make linkcheck)
+	nosetests --with-html-output --html-out-file=results.html --where $(PWD) --config=test/nosetests.cfg employees test/test*.py
 
 doc:
 	# creating coverage html report to be included in final documentation
 	$(RM) -rf $(COVER)
 	coverage html -d $(COVER)
 	# create sphinx documentation
-	(cd docs; make singlehtml)
+	(cd docs; make html)
 
 dist:
 	# copy readme for use in distribution
@@ -88,12 +70,14 @@ clean:
 	# clean generated documents
 	(cd docs; make clean)
 	$(RM) -rf cover
-	$(RM) -rf results
+	$(RM) -rf __pycache__
+	$(RM) -f results.html
+	$(RM) -rf results/
 	$(RM) -rf target
 	$(RM) -v MANIFEST
 	$(RM) -v .noseids
-	$(RM) -v *.pyc *.pyo *.py,cover
 	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
+	$(RM) -v *.pyc *.pyo *.py,cover
 	$(RM) -v README
 
 version:
