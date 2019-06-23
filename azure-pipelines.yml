@@ -1,0 +1,32 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+  - script: |
+      sudo apt-get install make python python-dev python-coverage python-pip
+      [[ ! -e /usr/bin/coverage ]] && sudo ln -sf /usr/bin/python-coverage /usr/bin/coverage
+      sudo apt-get install python-nose python-nosehtmloutput python-pyflakes python-sphinx python-sphinx-rtd-theme pandoc
+    displayName: 'install package dependencies'
+
+  - script: |
+      python -m pip install --upgrade pip
+      sudo python -m pip install pycodestyle
+    displayName: 'install project dependencies'
+
+  - script: |
+      make all
+    displayName: 'make project'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(System.DefaultWorkingDirectory)/results/'
+      artifactName: results

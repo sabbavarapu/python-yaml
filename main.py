@@ -26,7 +26,7 @@ def main(argv=sys.argv):
         prog=os.path.basename(argv[0]),
         usage='%(prog)s [options] infile',
         description='a Python example program to show YAML processing',
-        epilog='© 2014 Frank H Jung mailto:frankhjung@linux.com')
+        epilog='© 2014-2019 Frank H Jung mailto:frankhjung@linux.com')
     parser.add_argument(
         'infile',
         nargs='?',

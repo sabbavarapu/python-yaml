@@ -6,16 +6,14 @@
 
 .DEFAULT_GOAL := help
 
-.PHONY: check run test doc clean help
+.PHONY: check clean cover dist doc help run test
 
-COMMA:= ,
-EMPTY:=
-SPACE:= $(EMPTY) $(EMPTY)
+COMMA	:= ,
+EMPTY	:=
+SPACE	:= $(EMPTY) $(EMPTY)
 
-COVER_DIR = target/cover
-# srcs used by pyflakes
-SRCS=main.py employees/employees.py test/testemployees.py
-SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
+COVER	:= target/cover
+SRCS	:=main.py employees/employees.py test/testemployees.py
 
 all: check cover run test doc dist
 
@@ -69,8 +67,8 @@ test:
 
 doc:
 	# creating coverage html report to be included in final documentation
-	$(RM) -rf $(COVER_DIR)
-	coverage html -d $(COVER_DIR)
+	$(RM) -rf $(COVER)
+	coverage html -d $(COVER)
 	# create sphinx documentation
 	(cd docs; make singlehtml)
 
