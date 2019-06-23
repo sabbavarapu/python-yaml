@@ -1,7 +1,10 @@
-# Python package
-# Create and test a Python package on multiple Python versions.
-# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# Validate Python Application
+#
+# REFERENCES
+#
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables
 
 trigger:
 - master
@@ -25,14 +28,14 @@ steps:
 
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/results/'
-      includeRootFolder: true
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/target/docs/html'
+      includeRootFolder: false
       archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber).zip'
       replaceExistingArchive: true
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-      artifactName: results
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber).zip'
+      artifactName: docs
 
