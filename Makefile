@@ -30,14 +30,11 @@ help:
 	@echo
 	@echo "Activate virtual environment (venv) with:"
 	@echo
-	@echo "  pip3 install virtualenv"
-	@echo "  python3 -m virtualenv venv"
-	@echo "  source venv/bin/activate"
-	@echo "  pip3 install -r requirements.txt"
+	@echo "pip3 install virtualenv; python3 -m virtualenv venv; source venv/bin/activate; pip3 install -r requirements.txt"
 	@echo
 	@echo "Deactivate with:"
 	@echo
-	@echo "  deactivate"
+	@echo "deactivate"
 	@echo
 	@echo "TOOD"
 	@echo "	- generate HTML version of unit tests"
