@@ -46,7 +46,7 @@ help:
 
 check:
 	# format code to googles style
-	yapf --style google -i $(SRCS) setup.py
+	yapf --style google --parallel -i $(SRCS) setup.py
 	# check with pylint
 	pylint3 $(SRCS)
 	# check distutils
@@ -62,17 +62,19 @@ test:
 
 dist:
 	# copy readme for use in distribution
-	pandoc -t plain README.md > README
+	# pandoc -t plain README.md > README
 	# create source package and build distribution
 	python3 setup.py clean
 	python3 setup.py sdist --dist-dir=target/dist
 	python3 setup.py build --build-base=target/build
+	mv target/dist/*.tar.gz ./public/
 
 doc:
 	# unit test code coverage
 	coverage3 html -d cover employees/employees.py
 	# create sphinx documentation
 	(cd docs; make html)
+	mv target/docs/html ./public
 
 clean:
 	# clean build distribution
@@ -80,12 +82,12 @@ clean:
 	# clean generated documents
 	(cd docs; make clean)
 	$(RM) -rf cover
+	$(RM) -rf public
 	$(RM) -rf __pycache__ employees/__pycache__ tests/__pycache__
 	$(RM) -rf target
+	$(RM) -v MANIFEST
 	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
 	$(RM) -v *.pyc *.pyo *.py,cover
-	$(RM) -v README
-	$(RM) -v MANIFEST
 
 version:
 	python3 -m main --version

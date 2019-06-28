@@ -1,8 +1,7 @@
 
-Processing YAML with Python
-===========================
+# Processing YAML with Python
 
-This is an example Python project used to demonstrate:
+This is an example Python project to demonstrate:
 
 * format code to Google style using [YAPF](https://github.com/google/yapf)
 * lint code using [PyLint](https://www.pylint.org/)

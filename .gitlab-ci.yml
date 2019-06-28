@@ -19,8 +19,6 @@ cache:
     - venv/
 
 before_script:
-  - apt-get install -y pandoc
-  - pandoc --version
   - python -V
   - pip install virtualenv
   - virtualenv venv
@@ -28,29 +26,38 @@ before_script:
   - pip install -r requirements.txt
 
 check:
+  stage: test
   script:
-    - yapf --diff main employees.employees tests.testemployees
+    - yapf --style google --diff --parallel main.py setup.py employees/employees.py tests/testemployees.py
     - pylint main employees.employees tests.testemployees
     - python setup.py check
 
 test:
+  stage: test
   script:
     - python -m unittest --verbose
     - coverage report employees/employees.py
 
 run:
+  stage: test
   script:
+    - python -m main -h
+    - python -m main --version
     - python -m main -v tests/test.yaml
 
-# pages:
-#   script:
-#     - pandoc -t plain README.md > README
-#     - python setup.py clean
-#     - python setup.py sdist --dist-dir=target/dist
-#     - python setup.py build --build-base=target/build
-#     - mv build/html/ ../public/
-#   artifacts:
-#     paths:
-#       - public
-#   only:
-#     - master
+pages:
+  stage: deploy
+  script:
+    - coverage report employees/employees.py
+    - coverage3 html -d cover employees/employees.py
+    - (cd docs; make html)
+    - mv target/docs/html ./public
+    - python setup.py clean
+    - python setup.py sdist --dist-dir=target/dist
+    - python setup.py build --build-base=target/build
+    - mv target/dist/*.tar.gz ./public/
+  artifacts:
+    paths:
+      - public
+  # only:
+  #   - master
