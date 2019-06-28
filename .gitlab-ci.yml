@@ -1,0 +1,56 @@
+# This file is a template, and might need editing before it works on your project.
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/python/tags/
+image: python:latest
+
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+#
+# If you want to also cache the installed packages, you have to install
+# them in a virtualenv and cache it as well.
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+before_script:
+  - apt-get install -y pandoc
+  - pandoc --version
+  - python -V
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+  - pip install -r requirements.txt
+
+check:
+  script:
+    - yapf --diff main employees.employees tests.testemployees
+    - pylint main employees.employees tests.testemployees
+    - python setup.py check
+
+test:
+  script:
+    - python -m unittest --verbose
+    - coverage report employees/employees.py
+
+run:
+  script:
+    - python -m main -v tests/test.yaml
+
+# pages:
+#   script:
+#     - pandoc -t plain README.md > README
+#     - python setup.py clean
+#     - python setup.py sdist --dist-dir=target/dist
+#     - python setup.py build --build-base=target/build
+#     - mv build/html/ ../public/
+#   artifacts:
+#     paths:
+#       - public
+#   only:
+#     - master

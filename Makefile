@@ -6,80 +6,87 @@
 
 .DEFAULT_GOAL := help
 
-.PHONY: check clean cover dist doc help run test
+.test PHONY: check clean dist doc help run test
 
+SHELL	:= /bin/sh
 COMMA	:= ,
 EMPTY	:=
 SPACE	:= $(EMPTY) $(EMPTY)
 
-COVER	:= target/cover
-SRCS	:=main.py employees/employees.py test/testemployees.py
+SRCS	:= main.py employees/employees.py tests/testemployees.py
 
-all: check test cover doc run dist version
+all: check test dist doc run version
 
 help:
 	@echo
 	@echo "Default goal: ${.DEFAULT_GOAL}"
 	@echo "  all:   check cover run test doc dist"
-	@echo "  check: validate code and distribution config"
-	@echo "  cover: run test coverage report"
+	@echo "  check: check style and lint code"
 	@echo "  run:   run against test data"
-	@echo "  test:  run unit test"
-	@echo "  doc:   create documentation including test converage and results"
+	@echo "  test:  run unit tests"
 	@echo "  dist:  create a distrbution archive"
+	@echo "  doc:   create documentation including test converage and results"
 	@echo "  clean: delete all generated files"
 	@echo
+	@echo "Activate virtual environment (venv) with:"
+	@echo
+	@echo "  pip3 install virtualenv"
+	@echo "  python3 -m virtualenv venv"
+	@echo "  source venv/bin/activate"
+	@echo "  pip3 install -r requirements.txt"
+	@echo
+	@echo "Deactivate with:"
+	@echo
+	@echo "  deactivate"
+	@echo
+	@echo "TOOD"
+	@echo "	- generate HTML version of unit tests"
+	@echo "	- investigate why pylint slow on test classes"
+	@echo "	- complete test coverage"
 
 check:
-	# check with pyflakes
-	pyflakes $(SRCS)
-	# check with pycodestyle
-	pycodestyle --verbose $(SRCS)
+	# format code to googles style
+	yapf --style google -i $(SRCS) setup.py
+	# check with pylint
+	pylint3 $(SRCS)
 	# check distutils
 	python3 setup.py check
 
-cover:
-	nosetests --with-coverage --cover-erase --cover-html-dir=results --cover-html --where $(PWD) --config=test/nosetests.cfg --cover-package employees test/test*.py
-
 run:
-	python3 -m main -v test/test.yaml
+	python3 -m main -v tests/test.yaml
 
 test:
-	nosetests --with-html-output --html-out-file=results.html --where $(PWD) --config=test/nosetests.cfg employees test/test*.py
-
-doc:
-	# creating coverage html report to be included in final documentation
-	$(RM) -rf $(COVER)
-	coverage html -d $(COVER)
-	# create sphinx documentation
-	(cd docs; make html)
+	# python3 -m unittest --verbose
+	coverage3 run -m unittest --verbose
+	coverage3 report employees/employees.py
 
 dist:
 	# copy readme for use in distribution
 	pandoc -t plain README.md > README
 	# create source package and build distribution
-	python setup.py clean
-	python setup.py sdist --dist-dir=target/dist
-	python setup.py build --build-base=target/build
+	python3 setup.py clean
+	python3 setup.py sdist --dist-dir=target/dist
+	python3 setup.py build --build-base=target/build
+
+doc:
+	# unit test code coverage
+	coverage3 html -d cover employees/employees.py
+	# create sphinx documentation
+	(cd docs; make html)
 
 clean:
-	# cleaning workspace
-	coverage erase
 	# clean build distribution
 	python setup.py clean
 	# clean generated documents
 	(cd docs; make clean)
 	$(RM) -rf cover
-	$(RM) -rf __pycache__
-	$(RM) -f results.html
-	$(RM) -rf results/
+	$(RM) -rf __pycache__ employees/__pycache__ tests/__pycache__
 	$(RM) -rf target
-	$(RM) -v MANIFEST
-	$(RM) -v .noseids
 	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
 	$(RM) -v *.pyc *.pyo *.py,cover
 	$(RM) -v README
+	$(RM) -v MANIFEST
 
 version:
-	@grep -F '__version__' employees/employees.py
+	python3 -m main --version
 

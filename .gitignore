@@ -1,6 +1,8 @@
 *~
 *.bak
+build/
 *,cover
+cover
 .coverage
 dist/
 .DS_Store
@@ -13,7 +15,8 @@ __pycache__
 *.pyo
 .Python
 README
-results.html
 results/
+results.html
 *.swp
 target/
+venv
