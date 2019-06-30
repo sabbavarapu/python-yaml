@@ -55,25 +55,24 @@ steps:
 
   - script: |
       (cd docs; make html)
-      mv target/docs/html public
     displayName: docs
 
   - script: |
       python setup.py clean
       python setup.py sdist --dist-dir=target/dist
       python setup.py build --build-base=target/build
-      mv target/dist/*.tar.gz public/
+      cp $(System.DefaultWorkingDirectory)/target/dist/Employees-*.tar.gz $(Build.ArtifactStagingDirectory)
     displayName: dist
 
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/public'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/target/docs/html'
       includeRootFolder: false
       archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber).zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/docs-$(Build.BuildNumber).zip'
       replaceExistingArchive: true
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber).zip'
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: package

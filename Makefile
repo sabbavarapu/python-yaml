@@ -1,8 +1,4 @@
-# Manage project
-#
-# You can run unittests using ...
-# - python -m test.testemployees -v
-# - python -m unittest discover -v
+#!/usr/bin/env make
 
 .DEFAULT_GOAL := help
 
@@ -37,10 +33,13 @@ help:
 	@echo
 	@echo "deactivate"
 	@echo
-	@echo "TOOD"
-	@echo "	- generate HTML version of unit tests"
-	@echo "	- investigate why pylint slow on test classes"
-	@echo "	- complete test coverage"
+	@echo "TODO"
+	@echo
+	@echo " * refactor to use PyUnit for unit tests"
+	@echo " * build HTML unit test report"
+	@echo " * complete test coverage currently 97/100"
+	@echo " * refactor from Classes to Functions"
+	@echo
 
 check:
 	# format code to googles style
@@ -65,7 +64,6 @@ doc:
 	coverage html -d cover employees/employees.py
 	# create sphinx documentation
 	(cd docs; make html)
-	mv target/docs/html public
 
 dist:
 	# copy readme for use in distribution
@@ -74,7 +72,6 @@ dist:
 	$(PYTHON) setup.py clean
 	$(PYTHON) setup.py sdist --dist-dir=target/dist
 	$(PYTHON) setup.py build --build-base=target/build
-	mv target/dist/*.tar.gz public/
 
 clean:
 	# clean build distribution
@@ -82,7 +79,7 @@ clean:
 	# clean generated documents
 	(cd docs; make clean)
 	$(RM) -rf cover
-	$(RM) -rf public
+	$(RM) -rf .coverage
 	$(RM) -rf __pycache__ employees/__pycache__ tests/__pycache__
 	$(RM) -rf target
 	$(RM) -v MANIFEST

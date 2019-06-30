@@ -16,4 +16,5 @@ pipelines:
           - make help
           - make clean all
         artifacts:
-          - public/**
+          - target/dist/**
+          - target/docs/html/**

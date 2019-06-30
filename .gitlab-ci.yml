@@ -52,13 +52,13 @@ pages:
     - coverage report employees/employees.py
     - coverage html -d cover employees/employees.py
     - (cd docs; make html)
-    - mv target/docs/html ./public
     - python setup.py clean
     - python setup.py sdist --dist-dir=target/dist
     - python setup.py build --build-base=target/build
-    - mv target/dist/*.tar.gz ./public/
+    - mv target/docs/html public
   artifacts:
     paths:
       - public
+      - target/dist/*.tar.gz
   only:
     - master
