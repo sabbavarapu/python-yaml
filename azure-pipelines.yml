@@ -55,14 +55,14 @@ steps:
 
   - script: |
       (cd docs; make html)
-      mv target/docs/html ./public
+      mv target/docs/html public
     displayName: docs
 
   - script: |
       python setup.py clean
       python setup.py sdist --dist-dir=target/dist
       python setup.py build --build-base=target/build
-      mv target/dist/*.tar.gz ./public/
+      mv target/dist/*.tar.gz public/
     displayName: dist
 
   - task: ArchiveFiles@2

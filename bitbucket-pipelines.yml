@@ -3,13 +3,17 @@ image: python:3.7.3
 pipelines:
   default:
     - step:
-        name: install dependencies and make project
+        name: build all
         caches:
           - pip
         script:
           - uname -a
-          - apt-get update
-          - apt-get --yes install make pandoc
-          - pip3 install -r requirements.txt
-          - pip3 list
-          - make check test run
+          - apt-get update && apt-get install -y make python3-yaml
+          - python --version
+          - pip --version
+          - pip install -r requirements.txt
+          - pip list
+          - make help
+          - make clean all
+        artifacts:
+          - public/**

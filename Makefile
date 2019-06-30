@@ -12,10 +12,11 @@ SHELL	:= /bin/sh
 COMMA	:= ,
 EMPTY	:=
 SPACE	:= $(EMPTY) $(EMPTY)
+PYTHON	:= /usr/bin/python3
 
 SRCS	:= main.py employees/employees.py tests/testemployees.py
 
-all: check test dist doc run version
+all: check test run doc dist
 
 help:
 	@echo
@@ -45,40 +46,39 @@ check:
 	# format code to googles style
 	yapf --style google --parallel -i $(SRCS) setup.py
 	# check with pylint
-	pylint3 $(SRCS)
+	pylint $(SRCS)
 	# check distutils
-	python3 setup.py check
+	$(PYTHON) setup.py check
 
 run:
-	python3 -m main -v tests/test.yaml
-	python3 -m main -h
-	python3 -m main --version
+	$(PYTHON) -m main -v tests/test.yaml
+	$(PYTHON) -m main -h
+	$(PYTHON) -m main --version
 
 test:
-	# python3 -m unittest --verbose
-	coverage3 run -m unittest --verbose
-	coverage3 report employees/employees.py
+	# $(PYTHON) -m unittest --verbose
+	coverage run -m unittest --verbose
+	coverage report employees/employees.py
+
+doc:
+	# unit test code coverage
+	coverage html -d cover employees/employees.py
+	# create sphinx documentation
+	(cd docs; make html)
+	mv target/docs/html public
 
 dist:
 	# copy readme for use in distribution
 	# pandoc -t plain README.md > README
 	# create source package and build distribution
-	python3 setup.py clean
-	python3 setup.py sdist --dist-dir=target/dist
-	python3 setup.py build --build-base=target/build
-	mv target/dist/*.tar.gz ./public/
-
-doc:
-	# unit test code coverage
-	coverage3 report employees/employees.py
-	coverage3 html -d cover employees/employees.py
-	# create sphinx documentation
-	(cd docs; make html)
-	mv target/docs/html ./public
+	$(PYTHON) setup.py clean
+	$(PYTHON) setup.py sdist --dist-dir=target/dist
+	$(PYTHON) setup.py build --build-base=target/build
+	mv target/dist/*.tar.gz public/
 
 clean:
 	# clean build distribution
-	python setup.py clean
+	$(PYTHON) setup.py clean
 	# clean generated documents
 	(cd docs; make clean)
 	$(RM) -rf cover
@@ -90,5 +90,5 @@ clean:
 	$(RM) -v *.pyc *.pyo *.py,cover
 
 version:
-	python3 -m main --version
+	$(PYTHON) -m main --version
 

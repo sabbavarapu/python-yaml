@@ -1,8 +1,8 @@
-coverage
-flake8
-pyflakes
-pylint
-pyyaml
-sphinx
-virtualenv
-yapf
+coverage==4.5.3
+flake8==3.7.7
+pyflakes==2.1.1
+pylint==2.3.1
+pyyaml==5.1.1
+sphinx==2.1.2
+virtualenv==16.6.1
+yapf==0.27.0
