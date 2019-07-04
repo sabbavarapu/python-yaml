@@ -35,8 +35,8 @@ check:
 test:
   stage: test
   script:
-    - coverage run -m unittest --verbose
-    - coverage report employees/employees.py
+    - pytest -v --html=cover/report.html --cov=employees tests/test*.py
+    - coverage html -d cover employees/employees.py
 
 run:
   stage: test
@@ -48,8 +48,7 @@ run:
 pages:
   stage: deploy
   script:
-    - coverage run -m unittest
-    - coverage report employees/employees.py
+    - pytest -v --html=cover/report.html --cov=employees tests/test*.py
     - coverage html -d cover employees/employees.py
     - (cd docs; make html)
     - python setup.py clean

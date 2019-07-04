@@ -39,23 +39,19 @@ steps:
     displayName: check
 
   - script: |
-      coverage run -m unittest --verbose
+      pytest -v --html=cover/report.html --cov=employees tests/test*.py
+      coverage html -d cover employees/employees.py
     displayName: test
 
   - script: |
-      coverage report employees/employees.py
-      coverage html -d cover employees/employees.py
-    displayName: coverage
+      (cd docs; make html)
+    displayName: docs
 
   - script: |
       python -m main -h
       python -m main --version
       python -m main -v tests/test.yaml
     displayName: run
-
-  - script: |
-      (cd docs; make html)
-    displayName: docs
 
   - script: |
       python setup.py clean

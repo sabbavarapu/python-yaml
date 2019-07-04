@@ -1,18 +1,21 @@
 # Example Python 3 Project - Processing YAML
 
-An example [Python 3](https://docs.python.org/3/) project. For more detail see
-package [README](./README.rst).
+Simple [Python 3](https://docs.python.org/3/) example project.
 
-## GitLab
+## Documentation
 
-Package documentation static
-[pages](https://docs.gitlab.com/ce/user/project/pages/getting_started_part_one.html):
-https://themarlogroup.gitlab.io/training/students/fjung/python-yaml
+* [Package reStructuredText](./README.rst)
 
-## GitHub
+* GitLab
+  [pages](https://docs.gitlab.com/ce/user/project/pages/getting_started_part_one.html):
+  https://themarlogroup.gitlab.io/training/students/fjung/python-yaml
 
-Using [Azure
-pipelines](https://docs.microsoft.com/en-au/azure/devops/pipelines/index?view=azure-devops).
+## Pipelines
 
-[![Build Status](https://dev.azure.com/frankhjung/python/_apis/build/status/frankhjung.python-yaml?branchName=master)](https://dev.azure.com/frankhjung/python/_build/latest?definitionId=4&branchName=master)
+* [Bitbucket](https://bitbucket.org/frankhjung/python-yaml/addon/pipelines/home)
+
+* [![GitHub /
+  Azure](https://dev.azure.com/frankhjung/python/_apis/build/status/frankhjung.python-yaml?branchName=master)](https://dev.azure.com/frankhjung/python/_build/latest?definitionId=4&branchName=master)
+
+* [GitLab](https://gitlab.com/theMarloGroup/training/students/fjung/python-yaml/pipelines)
 

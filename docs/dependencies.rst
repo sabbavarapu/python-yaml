@@ -11,6 +11,7 @@ Name            Description
 =============== ===================================
 coverage        Unit test code coverage           
 pylint          Code linter                       
+pytest          Unit tests
 pyyaml          YAML parser and emitter for Python
 sphinx          Documentation generator           
 virtualenv      Virtual environment               

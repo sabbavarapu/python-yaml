@@ -8,7 +8,7 @@ TestEmployees
 
 This project contains the Employee class and associated unit tests:
 
-The unit test report is :doc:`unittests`.
+The unit tests and test coverage reports are available from :doc:`unittests`.
 
 To get help on this module, run::
 
@@ -19,5 +19,7 @@ Module
 
 .. automodule:: tests.testemployees
    :members:
+
+:download:`Source <../tests/testemployees.py>`
 
 .. EOF

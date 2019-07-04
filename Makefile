@@ -25,20 +25,17 @@ help:
 	@echo "  doc:   create documentation including test converage and results"
 	@echo "  clean: delete all generated files"
 	@echo
-	@echo "Activate virtual environment (venv) with:"
+	@echo "Initialise virtual environment (venv) with:"
 	@echo
 	@echo "pip3 install virtualenv; python3 -m virtualenv venv; source venv/bin/activate; pip3 install -r requirements.txt"
+	@echo
+	@echo "Start virtual environment (venv) with:"
+	@echo
+	@echo "source venv/bin/activate"
 	@echo
 	@echo "Deactivate with:"
 	@echo
 	@echo "deactivate"
-	@echo
-	@echo "TODO"
-	@echo
-	@echo " * refactor to use PyUnit for unit tests"
-	@echo " * build HTML unit test report"
-	@echo " * complete test coverage currently 97/100"
-	@echo " * refactor from Classes to Functions"
 	@echo
 
 check:
@@ -50,10 +47,7 @@ check:
 	$(PYTHON) setup.py check
 
 test:
-	# $(PYTHON) -m unittest --verbose
-	coverage run -m unittest --verbose
-	coverage report employees/employees.py
-	# unit test code coverage
+	pytest -v --html=cover/report.html --cov=employees tests/test*.py
 	coverage html -d cover employees/employees.py
 
 doc:

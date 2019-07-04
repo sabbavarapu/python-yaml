@@ -12,4 +12,11 @@ Processing YAML with Python(3)
    unittests
    references
 
+Indices and Tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
 .. EOF
