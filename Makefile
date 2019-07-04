@@ -2,7 +2,7 @@
 
 .DEFAULT_GOAL := help
 
-.test PHONY: check clean dist doc help run test
+.PHONY: check clean dist doc help run test
 
 SHELL	:= /bin/sh
 COMMA	:= ,
@@ -49,29 +49,32 @@ check:
 	# check distutils
 	$(PYTHON) setup.py check
 
+test:
+	# $(PYTHON) -m unittest --verbose
+	coverage run -m unittest --verbose
+	coverage report employees/employees.py
+	# unit test code coverage
+	coverage html -d cover employees/employees.py
+
+doc:
+	# create sphinx documentation
+	(cd docs; make html)
+
+dist:
+	# create source package and build distribution
+	$(PYTHON) setup.py clean
+	$(PYTHON) setup.py sdist --dist-dir=target/dist
+	$(PYTHON) setup.py build --build-base=target/build
+	cp -pr target/docs/html public
+	cp -p target/dist/*.tar.gz public
+
 run:
 	$(PYTHON) -m main -v tests/test.yaml
 	$(PYTHON) -m main -h
 	$(PYTHON) -m main --version
 
-test:
-	# $(PYTHON) -m unittest --verbose
-	coverage run -m unittest --verbose
-	coverage report employees/employees.py
-
-doc:
-	# unit test code coverage
-	coverage html -d cover employees/employees.py
-	# create sphinx documentation
-	(cd docs; make html)
-
-dist:
-	# copy readme for use in distribution
-	# pandoc -t plain README.md > README
-	# create source package and build distribution
-	$(PYTHON) setup.py clean
-	$(PYTHON) setup.py sdist --dist-dir=target/dist
-	$(PYTHON) setup.py build --build-base=target/build
+version:
+	$(PYTHON) -m main --version
 
 clean:
 	# clean build distribution
@@ -81,11 +84,9 @@ clean:
 	$(RM) -rf cover
 	$(RM) -rf .coverage
 	$(RM) -rf __pycache__ employees/__pycache__ tests/__pycache__
+	$(RM) -rf public
 	$(RM) -rf target
 	$(RM) -v MANIFEST
-	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
 	$(RM) -v *.pyc *.pyo *.py,cover
-
-version:
-	$(PYTHON) -m main --version
+	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
 

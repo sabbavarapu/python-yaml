@@ -27,4 +27,10 @@ This provides usage information and command line parameters.
 The module :download:`main.py <../main.py>` exists just to run the
 :ref:`employees` class from command line.
 
+Module
+------
+
+.. automodule:: main
+   :members:
+
 .. EOF

@@ -14,4 +14,10 @@ To get help on this module, run::
 
    pydoc tests.testemployees
 
+Module
+------
+
+.. automodule:: tests.testemployees
+   :members:
+
 .. EOF

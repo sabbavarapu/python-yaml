@@ -3,7 +3,7 @@
 Dependencies
 ============
 
-The projects dependenvies are list in :download:`requirements.txt
+The projects dependencies are list in :download:`requirements.txt
 <../requirements.txt>`:
 
 =============== ===================================
