@@ -47,8 +47,7 @@ check:
 	$(PYTHON) setup.py check
 
 test:
-	pytest -v --html=cover/report.html --cov=employees tests/test*.py
-	coverage html -d cover employees/employees.py
+	pytest -v --html=cover/report.html --cov=employees --cov-report=html:cover tests/test*.py
 
 doc:
 	# create sphinx documentation
