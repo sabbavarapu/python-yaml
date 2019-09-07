@@ -6,16 +6,15 @@ Simple [Python 3](https://docs.python.org/3/) example project.
 
 * [Package reStructuredText](./README.rst)
 
-* GitLab
-  [pages](https://docs.gitlab.com/ce/user/project/pages/getting_started_part_one.html):
-  https://themarlogroup.gitlab.io/training/students/fjung/python-yaml
+* [GitHub Pages](https://frankhjung.github.io/python-yaml/index.html)
+
+* [GitLab pages](https://docs.gitlab.com/ce/user/project/pages/getting_started_part_one.html)
 
 ## Pipelines
 
 * [Bitbucket](https://bitbucket.org/frankhjung/python-yaml/addon/pipelines/home)
 
-* [![GitHub /
-  Azure](https://dev.azure.com/frankhjung/python/_apis/build/status/frankhjung.python-yaml?branchName=master)](https://dev.azure.com/frankhjung/python/_build/latest?definitionId=4&branchName=master)
+* [GitHub](https://frankhjung.github.io/python-yaml/index.html)
 
 * [GitLab](https://gitlab.com/theMarloGroup/training/students/fjung/python-yaml/pipelines)
 
