@@ -9,7 +9,7 @@ This is a example Python program to read and process YAML files.
 class Employees():
     """ Read Employee data to return turnover information. """
 
-    __version__ = '0.7.0'
+    __version__ = '0.8.0'
 
     def __init__(self, infile=None):
         self.__class__ = Employees

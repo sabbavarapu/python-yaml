@@ -51,11 +51,11 @@ jobs:
         (cd docs; make html)
 
     - name: publish to pages
-      uses: crazy-max/ghaction-github-pages@master
+      uses: crazy-max/ghaction-github-pages@v1
       if: success()
       with:
-        build_dir: target/docs/html
         target_branch: gh-pages
+        build_dir: target/docs/html
       env:
         GITHUB_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
 
